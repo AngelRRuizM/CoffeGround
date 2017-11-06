@@ -133,6 +133,41 @@ mix.styles([
 
 /*
  |--------------------------------------------------------------------------
+ | Home
+ |--------------------------------------------------------------------------
+ |
+ */
+
+mix.copyDirectory('resources/assets/home/img', 'public/assets/home/img');
+mix.copyDirectory('resources/assets/home/css', 'public/assets/home/css');
+mix.copyDirectory('resources/assets/home/js', 'public/assets/home/js');
+
+/*mix.styles([
+    'resources/assets/home/css/bootstrap.min.css',
+    'resources/assets/home/css/owl.carousel.min.css',
+    'resources/assets/home/css/datepicker.min.css',
+    'resources/assets/home/css/lightbox.min.css',
+    'resources/assets/home/css/slider.miin.css',
+    'resources/assets/home/css/timepick.min.css',
+    'resources/assets/home/css/style.default.css',
+], 'public/assets/home/css/home_styles.css').version();*/
+
+/*mix.scripts([
+    'resources/assets/home/js/bootstrap.min.js',
+    'resources/assets/home/js/jquery.ba-cond.min.js',
+    'resources/assets/home/js/jquery.slitslider.min.js',
+    'resources/assets/home/js/owl.carousel.min.js',
+    'resources/assets/home/js/lightbox.min.js',
+    'resources/assets/home/js/datepicker.min.js',
+    'resources/assets/home/js/datepicker.en.min.js',
+    'resources/assets/home/js/timepicki.min.js',
+    'resources/assets/home/js/jquery.validate.min.js',
+    'resources/assets/home/js/smooth.scroll.min.js',
+    'resources/assets/home/js/script.js',
+], 'public/assets/home/js/home_scripts.js').version();*/
+
+/*
+ |--------------------------------------------------------------------------
  | Frontend
  |--------------------------------------------------------------------------
  |
