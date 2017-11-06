@@ -15,6 +15,19 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 20);
+            $table->string('description', 250);            
+            $table->integer('subcategory_id')->unsigned();
+            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('image_product', function (Blueprint $table) {
+            $table->increments('id');          
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('image_id')->unsigned();
+            $table->foreign('image_id')->references('id')->on('images')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,5 +40,6 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
+        Schema::dropIfExists('image_product');
     }
 }

@@ -15,6 +15,8 @@ class CreateCoffeeCategoriesTable extends Migration
     {
         Schema::create('coffee_categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 50);
+            $table->string('description', 250);
             $table->timestamps();
         });
     }
