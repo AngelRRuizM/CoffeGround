@@ -22,7 +22,7 @@ class CreateCoffeesTable extends Migration
             $table->integer('toast_id')->unsigned();
             $table->foreign('toast_id')->references('id')->on('toasts')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('coffe_category_id')->unsigned();
-            $table->foreign('coffe_category_id')->references('id')->on('coffe_categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('coffe_category_id')->references('id')->on('coffee_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
 
