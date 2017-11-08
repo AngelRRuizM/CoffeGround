@@ -15,8 +15,10 @@ class CreateCoffeesTable extends Migration
     {
         Schema::create('coffees', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 20);
-            $table->string('description', 250);            
+            $table->string('name_en', 100);
+            $table->string('description_en', 500);
+            $table->string('name_es', 100);
+            $table->string('description_es', 500);            
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('toast_id')->unsigned();
