@@ -53,8 +53,8 @@ class CreateCoffeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coffees');
         Schema::dropIfExists('coffee_image');
         Schema::dropIfExists('coffee_presentation');
+        Schema::dropIfExists('coffees');
     }
 }
