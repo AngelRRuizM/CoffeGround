@@ -9,7 +9,11 @@ node_modules/
 npm-shrinkwrap.json
 bower_components/
 bootstrap/compiled.php
+<<<<<<< HEAD
 bootstrap/cache/
+=======
+bootstrap/cache
+>>>>>>> dcc65378984fa8fb6ea49e402006d6b373a60a87
 
 storage/
 storage/debugbar/
