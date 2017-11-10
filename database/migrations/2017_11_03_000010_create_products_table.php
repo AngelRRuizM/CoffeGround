@@ -7,7 +7,8 @@ use Illuminate\Database\Migrations\Migration;
 class CreateProductsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla product, para saber mas, consultar el diagrama relacional de la base de datos.
+     * Tambien crea la tabla cruce image_product que relacion a image con product
      *
      * @return void
      */

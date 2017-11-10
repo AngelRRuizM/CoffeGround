@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePresentationsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla presentations, para saber mas, consultar el diagrama relacional de la base de datos
      *
      * @return void
      */
@@ -18,6 +18,8 @@ class CreatePresentationsTable extends Migration
             $table->string('weight', 15);
             $table->integer('ground_id')->unsigned();
             $table->foreign('ground_id')->references('id')->on('grounds')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('coffee_id')->unsigned();
+            $table->foreign('coffee_id')->references('id')->on('coffees')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

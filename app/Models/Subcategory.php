@@ -9,14 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Subcategory extends Model
 {
      /**
-     * The attributes that are mass assignable.
+     * Modelo que representa las realciones de la base de datos, en este caso se refleja:
+     * La relacion 1 a n de Category con Subcategory
+     * La relacion 1 a n de Subcategory con Product
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'category_id',];
+        'name_en', 'description_en', 'name_es', 'description_es', 'category_id',];
 
-    public function subcategory(){
+    public function category(){
 		return $this->belongsTo(Category::class);
 	}
 

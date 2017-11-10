@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * Modelo que representa las realciones de la base de datos, en este caso se refleja:
+     * La relacion 1 a n de category con subcategories
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'description',
+        'name_en', 'description_en', 'name_es', 'description_es',
     ];
     
     public function subcategories(){

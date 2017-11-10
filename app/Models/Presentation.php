@@ -9,18 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 class Presentation extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * Modelo que representa las realciones de la base de datos, en este caso se refleja:
+     * La relacion 1 a n de Presentation con Coffee
+     * La relacion 1 a n de Presentation con Ground
      *
      * @var array
      */
     protected $fillable = [
-        'weight', 'ground_id', ];
+        'weight', 'ground_id', 'coffee_id',];
 
     public function ground(){
 		return $this->belongsTo(Ground::class);
 	}
 
-    public function coffees(){
-		return $this->belongsToMany(Coffee::class);
+    public function coffee(){
+		return $this->belongsTo(Coffee::class);
 	}
 }

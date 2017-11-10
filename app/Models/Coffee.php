@@ -11,12 +11,18 @@ use Illuminate\Database\Eloquent\Model;
 class Coffee extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * Modelo que representa las realciones de la base de datos, en este caso se refleja:
+     * La relacion n a 1 de Type con Coffe
+     * La relacion n a 1 de Toast con Coffe
+     * La relacion n a 1 de CoffeCategory con Coffe
+     * La relacion 1 a n de Coffe con Toast
+     * La relacion n a n de Image con Coffe
+     * 
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'type_id', 'toast_id', 'coffee_category_id',
+        'name_en', 'description_en', 'name_es', 'description_es', 'type_id', 'toast_id', 'coffee_category_id', 
     ];
     
     public function type(){
@@ -32,7 +38,7 @@ class Coffee extends Model
     }
 
     public function presentations(){
-		return $this->belongsToMany(Presentation::class)->withPivot('price');
+		return $this->hasMany(Presentation::class)->withPivot('price');
 	}
 
     public function images(){

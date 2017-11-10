@@ -7,7 +7,8 @@ use Illuminate\Database\Migrations\Migration;
 class CreateCoffeesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla coffee, para saber mas, consultar el diagrama relacional de la base de datos.
+     * Tambien se crea la tabla cruce coffee_image que relaciona coffee con image
      *
      * @return void
      */
@@ -37,15 +38,6 @@ class CreateCoffeesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('coffee_presentation', function (Blueprint $table) {
-            $table->increments('id'); 
-            $table->double('price',8,2);       
-            $table->integer('coffee_id')->unsigned();
-            $table->foreign('coffee_id')->references('id')->on('coffees')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('presentation_id')->unsigned();
-            $table->foreign('presentation_id')->references('id')->on('presentations')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
-        });
     }
 
     /**

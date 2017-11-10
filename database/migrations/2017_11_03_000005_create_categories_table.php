@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateCategoriesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla categories, para saber mas, consultar el diagrama relacional de la base de datos
      *
      * @return void
      */

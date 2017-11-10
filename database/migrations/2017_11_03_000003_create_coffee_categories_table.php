@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateCoffeeCategoriesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla coffee_categories, para saber mas, consultar el diagrama relacional de la base de datos
      *
      * @return void
      */

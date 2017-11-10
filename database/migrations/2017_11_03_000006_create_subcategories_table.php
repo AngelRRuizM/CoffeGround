@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateSubcategoriesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla subcategories, para saber mas, consultar el diagrama relacional de la base de datos
      *
      * @return void
      */

@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
      /**
-     * The attributes that are mass assignable.
+     * Modelo que representa las realciones de la base de datos, en este caso se refleja:
+     * La relacion 1 a n de Coffee con Type
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'description',];
+        'name_en', 'description_en', 'name_es', 'description_es',];
 
-    public function coffee(){
-		return $this->belongsTo(Coffee::class);
+    public function coffees(){
+		return $this->hasMany(Coffee::class);
 	}
 }

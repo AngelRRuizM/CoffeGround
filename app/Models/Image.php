@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * Modelo que representa las realciones de la base de datos, en este caso se refleja:
+     * La relacion n a n de Image con Coffee
+     * La relacion n a n de Image con Product
      *
      * @var array
      */

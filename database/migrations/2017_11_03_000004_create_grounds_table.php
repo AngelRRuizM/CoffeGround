@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateGroundsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Crea la tabla grounds, para saber mas, consultar el diagrama relacional de la base de datos
      *
      * @return void
      */
