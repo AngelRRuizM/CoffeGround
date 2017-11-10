@@ -11,6 +11,6 @@ class ImageTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }
