@@ -40,7 +40,7 @@ class SubcategoryController extends Controller
         $subcategory->save();
 
         session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/categories');
+        return redirect('/admin/subcategories');
     }
 
 
@@ -94,7 +94,7 @@ class SubcategoryController extends Controller
         $subcategory->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect('/admin/categories');
+        return redirect('/admin/subcategories');
     }
 
     /**
@@ -111,6 +111,6 @@ class SubcategoryController extends Controller
         }
 
         $subcategory->delete();
-        return redirect('admin.categories.index');
+        return redirect('admin/subcategories/index');
     }
 }

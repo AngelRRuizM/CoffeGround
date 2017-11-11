@@ -2,40 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Type;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Obtiene todos los tipos de café y los pasa a index
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        
+        return view('admin.types.index', compact('types'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear "tipos"
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Obtiene los campos del nuevo tipo, los verifica y los guarda
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        //verifica que los datos estén presentes y que cuenten con la longitud adecuada
+        $validator = Validator::make($request->all(), [
+            'name_en' => 'required|max:100',
+            'description_en' => 'required|max:500',
+            'name_es' => 'required|max:100',
+            'description_es' => 'required|max:500',
+        ]);
+
+        //regresa a la página anterior si hubo algún error en los datos recibidos.
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        //crea y guarda el nuevo tostado
+        $type = new Type;
+        $name_en = $request->name_en;
+        $description_en = $request->description_en;
+        $name_es = $request->name_es;
+        $description_es = $request->descritpion_es;
+        $type->save();
+
+        session()->flash('message', 'El nuevo tipo ha sido guardado correctamente.');
+        return redirect('/admin/types');
     }
 
     /**
@@ -46,22 +71,32 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        if($type==null){
+            $errors = ['No se ha encontrado el id especificado'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.types.show', compact('type'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para cambiar la información del "tipo".
      *
      * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function edit(Type $type)
     {
-        //
+        if($type==null){
+            $errors = ['No se ha encontrado el id especificado'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el tipo especificado con información nueva
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Type  $type
@@ -69,17 +104,50 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        if($type==null){
+            $errors = ['No se ha encontrado el id especificado'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        //verifica que los datos estén presentes y que cuenten con la longitud adecuada
+        $validator = Validator::make($request->all(), [
+            'name_en' => 'required|max:100',
+            'description_en' => 'required|max:500',
+            'name_es' => 'required|max:100',
+            'description_es' => 'required|max:500',
+        ]);
+
+        //regresa a la página anterior si hubo algún error en los datos recibidos.
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        //guarda el nuevo tostado
+        $name_en = $request->name_en;
+        $description_en = $request->description_en;
+        $name_es = $request->name_es;
+        $description_es = $request->descritpion_es;
+        $type->save();
+
+        session()->flash('message', 'Los cambios al tipo han sido guardados correctamente.');
+        return redirect('/admin/types');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina al tipo seleccionado de la base de datos
      *
      * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function destroy(Type $type)
     {
-        //
+        if($type==null){
+            $errors = ['No se ha encontrado el id especificado'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $type->delete();
+        return redirect('admin/types/index');
     }
 }

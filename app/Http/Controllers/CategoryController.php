@@ -143,6 +143,6 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect('admin.categories.index');
+        return redirect('admin/categories/index');
     }
 }

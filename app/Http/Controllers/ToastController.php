@@ -2,62 +2,97 @@
 
 namespace App\Http\Controllers;
 
-use App\Toast;
+use App\Models\Toast;
 use Illuminate\Http\Request;
 
 class ToastController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Obtiene todos los tipos de tostado y los pasa a index
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $toasts = Toast::all();
+        
+        return view('admin.toasts.index', compact('toasts'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear tostados.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.toasts.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Pide los campos del nuevo tipo de tostado y los guarda
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        //verifica que los datos estén presentes y que cuenten con la longitud adecuada
+        $validator = Validator::make($request->all(), [
+            'name_en' => 'required|max:100',
+            'description_en' => 'required|max:500',
+            'name_es' => 'required|max:100',
+            'description_es' => 'required|max:500',
+        ]);
+
+        //regresa a la página anterior si hubo algún error en los datos recibidos.
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        //crea y guarda el nuevo tostado
+        $toast = new Toast;
+        $name_en = $request->name_en;
+        $description_en = $request->description_en;
+        $name_es = $request->name_es;
+        $description_es = $request->descritpion_es;
+        $toast->save();
+
+        session()->flash('message', 'El nuevo tipo de tostado ha sido guardado correctamente.');
+        return redirect('/admin/toasts');
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el tostado especificado
      *
      * @param  \App\Toast  $toast
      * @return \Illuminate\Http\Response
      */
     public function show(Toast $toast)
     {
-        //
+        if($toast == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.toasts.show', compact('toast'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para modificar la información del tipo de tostado
      *
      * @param  \App\Toast  $toast
      * @return \Illuminate\Http\Response
      */
     public function edit(Toast $toast)
     {
-        //
+        if($toast == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.toasts.edit', compact('toast'));
     }
 
     /**
@@ -69,17 +104,50 @@ class ToastController extends Controller
      */
     public function update(Request $request, Toast $toast)
     {
-        //
+        if($toast == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        //verifica que los datos estén presentes y que cuenten con la longitud adecuada
+        $validator = Validator::make($request->all(), [
+            'name_en' => 'required|max:100',
+            'description_en' => 'required|max:500',
+            'name_es' => 'required|max:100',
+            'description_es' => 'required|max:500',
+        ]);
+
+        //regresa a la página anterior si hubo algún error en los datos recibidos.
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        //guarda los cambios al tostado
+        $name_en = $request->name_en;
+        $description_en = $request->description_en;
+        $name_es = $request->name_es;
+        $description_es = $request->descritpion_es;
+        $toast->save();
+
+        session()->flash('message', 'Los cambios al tostado han sido guardados correctamente.');
+        return redirect('/admin/toasts');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el tostado especificado de la base de datos
      *
      * @param  \App\Toast  $toast
      * @return \Illuminate\Http\Response
      */
     public function destroy(Toast $toast)
     {
-        //
+        if($toast == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+        
+        $toast->delete();
+        return redirect('admin/toasts/index');
     }
 }

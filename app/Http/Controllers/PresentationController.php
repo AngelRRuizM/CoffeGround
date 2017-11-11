@@ -20,7 +20,7 @@ class PresentationController extends Controller
         $validator = Validator::make($request->all(), [
             'weight' => 'required|max:15',
             'price' => 'required|min:0|numeric',
-            'gorund_id' => 'required|numeric',
+            'ground_id' => 'required|numeric',
             'coffee_id' => 'required|numeric']);
 
         if($validator->fails()){
@@ -34,10 +34,10 @@ class PresentationController extends Controller
         $presentation->price = $request->price;
         $presentation->ground_id = $request->ground_id;
         $presentation->coffee_id = $request->coffee_id;
-        $coffee->save();
+        $presentation->save();
 
         session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/coffees');
+        return redirect('/admin/presentations');
     }
 
     /**
@@ -70,7 +70,7 @@ class PresentationController extends Controller
         $validator = Validator::make($request->all(), [
             'weight' => 'required|max:15',
             'price' => 'required|min:0|numeric',
-            'gorund_id' => 'required|numeric',
+            'ground_id' => 'required|numeric',
             'coffee_id' => 'required|numeric']);
 
         if($validator->fails()){
@@ -84,10 +84,10 @@ class PresentationController extends Controller
         $presentation->price = $request->price;
         $presentation->ground_id = $request->ground_id;
         $presentation->coffee_id = $request->coffee_id;
-        $coffee->save();
+        $presentation->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente.');
-        return redirect('/admin/coffees');
+        return redirect('/admin/presentations');
     }
 
     /**
@@ -104,6 +104,6 @@ class PresentationController extends Controller
         }
 
         $presentation->delete();
-        return redirect('admin.coffees.index');
+        return redirect('admin/presentations/index');
     }
 }
