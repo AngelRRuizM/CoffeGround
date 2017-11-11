@@ -14,7 +14,8 @@ class GroundController extends Controller
      */
     public function index()
     {
-        //
+       $grounds = Ground::all();
+        return view('admin.grounds.index', compact('grounds'));
     }
 
     /**
@@ -24,7 +25,7 @@ class GroundController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.grounds.create');
     }
 
     /**
@@ -35,7 +36,28 @@ class GroundController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validator = Validator::make($request->all(), [
+            'name_es' => 'required|max:100',
+            'name_en' => 'required|max:100',
+            'description_es' => 'required|max:500',
+            'description_en' => 'required|max:500',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        
+        $ground = new Ground;
+        $ground->name_es = $request->name_es;
+        $ground->name_en = $request->name_en;
+        $ground->description_es = $request->description_es;
+        $ground->description_en = $request->description_en;
+        $ground->save();
+
+        session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
+        return redirect('/admin/grounds');
     }
 
     /**
@@ -46,7 +68,13 @@ class GroundController extends Controller
      */
     public function show(Ground $ground)
     {
-        //
+
+            if($ground == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.grounds.show', compact('grounds'));
     }
 
     /**
@@ -57,7 +85,12 @@ class GroundController extends Controller
      */
     public function edit(Ground $ground)
     {
-        //
+        if($ground == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.grounds.edit', compact('grounds'));
     }
 
     /**
@@ -69,7 +102,32 @@ class GroundController extends Controller
      */
     public function update(Request $request, Ground $ground)
     {
-        //
+        if($ground == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name_es' => 'required|max:100',
+            'name_en' => 'required|max:100',
+            'description_es' => 'required|max:500',
+            'description_en' => 'required|max:500',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        
+        $ground->name_es = $request->name_es;
+        $ground->name_en = $request->name_en;
+        $ground->description_es = $request->description_es;
+        $ground->description_en = $request->description_en;
+        $ground->save();
+
+        session()->flash('message', 'La base de datos ha sido actualizada correctamente');
+        return redirect('/admin/grounds');
     }
 
     /**
@@ -80,6 +138,12 @@ class GroundController extends Controller
      */
     public function destroy(Ground $ground)
     {
-        //
+        if($ground == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $ground->delete();
+        return redirect('admin.grounds.index');
     }
 }

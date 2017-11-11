@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\CoffeeCategory;
+use App\Models\CoffeeCategory;
 use Illuminate\Http\Request;
 
 class CoffeeCategoryController extends Controller
 {
+    // index, show, create, store, edit, update, delete.
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class CoffeeCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = CoffeeCategory::all();
+        return view('admin.coffeeCategories.index', compact('coffeeCategories'));
     }
 
     /**
@@ -24,7 +27,7 @@ class CoffeeCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.coffeeCategories.create');
     }
 
     /**
@@ -35,7 +38,28 @@ class CoffeeCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name_es' => 'required|max:100',
+            'name_en' => 'required|max:100',
+            'description_es' => 'required|max:500',
+            'description_en' => 'required|max:500',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        
+        $coffeeCategory = new CoffeeCategory;
+        $coffeeCategory->name_es = $request->name_es;
+        $coffeeCategory->name_en = $request->name_en;
+        $coffeeCategory->description_es = $request->description_es;
+        $coffeeCategory->description_en = $request->description_en;
+        $coffeeCategory->save();
+
+        session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
+        return redirect('/admin/coffeeCategories');
     }
 
     /**
@@ -46,7 +70,12 @@ class CoffeeCategoryController extends Controller
      */
     public function show(CoffeeCategory $coffeeCategory)
     {
-        //
+            if($coffeeCategory == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.coffeeCategories.show', compact('coffeeCategories'));
     }
 
     /**
@@ -57,7 +86,12 @@ class CoffeeCategoryController extends Controller
      */
     public function edit(CoffeeCategory $coffeeCategory)
     {
-        //
+       if($coffeeCategory == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        return view('admin.coffeeCategories.edit', compact('coffeeCategories'));
     }
 
     /**
@@ -69,7 +103,32 @@ class CoffeeCategoryController extends Controller
      */
     public function update(Request $request, CoffeeCategory $coffeeCategory)
     {
-        //
+        if($coffeeCategory == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name_es' => 'required|max:100',
+            'name_en' => 'required|max:100',
+            'description_es' => 'required|max:500',
+            'description_en' => 'required|max:500',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request)
+                ->withErrors($validator);
+        }
+        
+        $coffeeCategory->name_es = $request->name_es;
+        $coffeeCategory->name_en = $request->name_en;
+        $coffeeCategory->description_es = $request->description_es;
+        $coffeeCategory->description_en = $request->description_en;
+        $coffeeCategory->save();
+
+        session()->flash('message', 'La base de datos ha sido actualizada correctamente');
+        return redirect('/admin/coffeeCategories');
     }
 
     /**
@@ -80,6 +139,12 @@ class CoffeeCategoryController extends Controller
      */
     public function destroy(CoffeeCategory $coffeeCategory)
     {
-        //
+        if($coffeeCategory == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $coffeeCategory->delete();
+        return redirect('admin.coffeeCategories.index');
     }
 }
