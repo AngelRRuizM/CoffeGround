@@ -17,7 +17,7 @@ class CoffeeCategoryController extends Controller
     public function index()
     {
         $categories = CoffeeCategory::all();
-        return view('admin.coffeeCategories.index', compact('coffeeCategories'));
+        return view('admin/coffeeCategories/index', compact('coffeeCategories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CoffeeCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.coffeeCategories.create');
+        return view('admin/coffeeCategories/create');
     }
 
     /**
@@ -75,7 +75,7 @@ class CoffeeCategoryController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin.coffeeCategories.show', compact('coffeeCategories'));
+        return view('admin/coffeeCategories/show', compact('coffeeCategories'));
     }
 
     /**
@@ -91,7 +91,7 @@ class CoffeeCategoryController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin.coffeeCategories.edit', compact('coffeeCategories'));
+        return view('admin/coffeeCategories/edit', compact('coffeeCategories'));
     }
 
     /**
@@ -145,6 +145,6 @@ class CoffeeCategoryController extends Controller
         }
 
         $coffeeCategory->delete();
-        return redirect('admin.coffeeCategories.index');
+        return redirect('admin/coffeeCategories/index');
     }
 }

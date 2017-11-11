@@ -15,7 +15,7 @@ class GroundController extends Controller
     public function index()
     {
        $grounds = Ground::all();
-        return view('admin.grounds.index', compact('grounds'));
+        return view('admin/grounds/index', compact('grounds'));
     }
 
     /**
@@ -25,7 +25,7 @@ class GroundController extends Controller
      */
     public function create()
     {
-       return view('admin.grounds.create');
+       return view('admin/grounds/create');
     }
 
     /**
@@ -74,7 +74,7 @@ class GroundController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin.grounds.show', compact('grounds'));
+        return view('admin/grounds/show', compact('grounds'));
     }
 
     /**
@@ -90,7 +90,7 @@ class GroundController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin.grounds.edit', compact('grounds'));
+        return view('admin/grounds/edit', compact('grounds'));
     }
 
     /**
@@ -144,6 +144,6 @@ class GroundController extends Controller
         }
 
         $ground->delete();
-        return redirect('admin.grounds.index');
+        return redirect('admin/grounds/index');
     }
 }
