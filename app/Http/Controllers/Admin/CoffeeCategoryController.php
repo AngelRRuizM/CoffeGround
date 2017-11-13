@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\CoffeeCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CoffeeCategoryController extends Controller
 {
@@ -16,8 +18,8 @@ class CoffeeCategoryController extends Controller
      */
     public function index()
     {
-        $categories = CoffeeCategory::all();
-        return view('admin/coffeeCategories/index', compact('coffeeCategories'));
+        $coffeeCategories = CoffeeCategory::all();
+        return view('admin.coffeeCategories.index', compact('coffeeCategories'));
     }
 
     /**
@@ -27,7 +29,7 @@ class CoffeeCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin/coffeeCategories/create');
+        return view('admin.coffeeCategories.create');
     }
 
     /**
@@ -47,7 +49,7 @@ class CoffeeCategoryController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -59,7 +61,7 @@ class CoffeeCategoryController extends Controller
         $coffeeCategory->save();
 
         session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/coffeeCategories');
+        return redirect(route('admin.coffeeCategories'));
     }
 
     /**
@@ -75,7 +77,7 @@ class CoffeeCategoryController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin/coffeeCategories/show', compact('coffeeCategories'));
+        return view('admin.coffeeCategories.show', compact('coffeeCategory'));
     }
 
     /**
@@ -91,7 +93,7 @@ class CoffeeCategoryController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin/coffeeCategories/edit', compact('coffeeCategories'));
+        return view('admin.coffeeCategories.edit', compact('coffeeCategory'));
     }
 
     /**
@@ -117,7 +119,7 @@ class CoffeeCategoryController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -128,7 +130,7 @@ class CoffeeCategoryController extends Controller
         $coffeeCategory->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect('/admin/coffeeCategories');
+        return redirect(route('admin.coffeeCategories'));
     }
 
     /**
@@ -145,6 +147,7 @@ class CoffeeCategoryController extends Controller
         }
 
         $coffeeCategory->delete();
-        return redirect('admin/coffeeCategories/index');
+        session()->flash('message', 'La categoria de café se ha eliminado correctamente.');
+        return redirect(route('admin.coffeeCategories'));
     }
 }
