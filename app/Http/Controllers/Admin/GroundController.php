@@ -1,84 +1,88 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Ground;
+use App\Http\Controllers\Controller;
+use App\Models\Ground;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class GroundController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Obtiene todos los tipos de molido y los pasa a index.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
        $grounds = Ground::all();
-        return view('admin/grounds/index', compact('grounds'));
+
+        return view('admin.grounds.index', compact('grounds'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo molido.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-       return view('admin/grounds/create');
+       return view('admin.grounds.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Obtiene los campos del nuevo molido, los verifica y los guarda.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //verifica que los datos estén presentes y con la longitud requerida
        $validator = Validator::make($request->all(), [
             'name_es' => 'required|max:100',
-            'name_en' => 'required|max:100',
-            'description_es' => 'required|max:500',
             'description_en' => 'required|max:500',
+            'name_en' => 'required|max:100',
+            'description_es' => 'required|max:500',   
         ]);
-
+        
+        //regresa a la página anterior si hubo algun error en los datos recibidos
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
-        
+        //crea y guarda el nuevo molido
         $ground = new Ground;
-        $ground->name_es = $request->name_es;
-        $ground->name_en = $request->name_en;
-        $ground->description_es = $request->description_es;
+        $ground->name_en = $request->name_es;
         $ground->description_en = $request->description_en;
+        $ground->name_es = $request->name_en;
+        $ground->description_es = $request->description_es;
         $ground->save();
 
         session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/grounds');
+        return redirect( route('admin.grounds') );
     }
 
     /**
-     * Display the specified resource.
+     * Muestra los molidos.
      *
      * @param  \App\Ground  $ground
      * @return \Illuminate\Http\Response
      */
     public function show(Ground $ground)
     {
-
             if($ground == null){
             $errors = ['No se ha encontrado el id especificado.'];
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin/grounds/show', compact('grounds'));
+        return view('admin.grounds.show', compact('ground'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para cambiar la información del molido.
      *
      * @param  \App\Ground  $ground
      * @return \Illuminate\Http\Response
@@ -90,7 +94,7 @@ class GroundController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin/grounds/edit', compact('grounds'));
+        return view('admin.grounds.edit', compact('ground'));
     }
 
     /**
@@ -102,32 +106,34 @@ class GroundController extends Controller
      */
     public function update(Request $request, Ground $ground)
     {
-        if($ground == null){
-            $errors = ['No se ha encontrado el id especificado.'];
+        if($ground==null){
+            $errors = ['No se ha encontrado el id especificado'];
             return redirect()->back()->withErrors($errors);
         }
 
+        //verifica que los datos estén presentes y que cuenten con la longitud adecuada
         $validator = Validator::make($request->all(), [
-            'name_es' => 'required|max:100',
             'name_en' => 'required|max:100',
-            'description_es' => 'required|max:500',
             'description_en' => 'required|max:500',
+            'name_es' => 'required|max:100',
+            'description_es' => 'required|max:500',
         ]);
 
+        //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
-        
-        $ground->name_es = $request->name_es;
+        //guarda el nuevo tostado
         $ground->name_en = $request->name_en;
-        $ground->description_es = $request->description_es;
         $ground->description_en = $request->description_en;
+        $ground->name_es = $request->name_es;
+        $ground->description_es = $request->description_es;
         $ground->save();
 
-        session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect('/admin/grounds');
+        session()->flash('message', 'Los cambios al tipo de molido han sido guardados correctamente.');
+        return redirect( route('admin.grounds.show', ['ground' => $ground->id]) );
     }
 
     /**
@@ -144,6 +150,8 @@ class GroundController extends Controller
         }
 
         $ground->delete();
-        return redirect('admin/grounds/index');
+
+        session() -> flash('message', 'El tipo de molido se ha eliminado correctamente'); 
+        return redirect(route ('admin.grounds') );
     }
 }

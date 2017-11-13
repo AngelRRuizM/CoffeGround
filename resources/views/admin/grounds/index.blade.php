@@ -5,9 +5,9 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Lista de tipos de café</h2>
+            <h2>Lista de tipos de molido</h2>
             <ul class="nav navbar-right panel_toolbox">
-                <li><a href="{{ route('admin.types.create') }}"><button type="button" class="btn btn-success">Crear tipo de café</button></a></li>
+                <li><a href="{{ route('admin.grounds.create') }}"><button type="button" class="btn btn-success">Crear tipo de molido</button></a></li>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -24,16 +24,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($types as $type)
+                    @foreach($grounds as $ground)
                         <tr>
-                            <th scope="row"> {{$type->name_es}} </th>
-                            <td> {{$type->description_es}} </td>
+                            <th scope="row"> {{$ground->name_es}} </th>
+                            <td> {{$ground->description_es}} </td>
                             <td>
-                                <a href="{{ route('admin.types.show', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.types.edit', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
+                                <a href="{{ route('admin.grounds.show', ['ground_id' => $ground->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
+                                <a href="{{ route('admin.grounds.edit', ['ground_id' => $ground->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
                             </td>
                             <td>
-                                <form method="POST" action="{{ route('admin.types.destroy', ['type_id' => $type->id   ]) }}" accept-charset="UTF-8">
+                                <form method="POST" action="{{ route('admin.grounds.destroy', ['ground' => $ground->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <input class="btn btn-danger" type="submit" value="Eliminar">
