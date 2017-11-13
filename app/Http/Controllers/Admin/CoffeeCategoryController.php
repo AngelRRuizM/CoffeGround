@@ -130,7 +130,7 @@ class CoffeeCategoryController extends Controller
         $coffeeCategory->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect(route('admin.coffeeCategories'));
+        return redirect(route('admin.coffeeCategories.show', [$coffeeCategory->id]));
     }
 
     /**

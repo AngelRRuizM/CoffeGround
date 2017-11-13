@@ -78,6 +78,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('tostados/{toast}', 'ToastController@update')->name('toasts.update');
     Route::delete('tostados/{toast}', 'ToastController@destroy')->name('toasts.destroy');
 
+    //Products
+    Route::get('productos', 'ProductController@index')->name('products');
+    Route::get('productos/crear', 'ProductController@create')->name('products.create');
+    Route::get('productos/{product}', 'ProductController@show')->name('products.show');
+    Route::get('productos/{product}/editar', 'ProductController@edit')->name('products.edit');
+    Route::post('productos', 'ProductController@store')->name('products.store');
+    Route::put('productos/{product}', 'ProductController@update')->name('products.update');
+    Route::delete('productos/{product}', 'ProductController@destroy')->name('products.destroy');
+
     //Grounds
     Route::get('molidos', 'GroundController@index')->name('grounds');
     Route::get('molidos/crear', 'GroundController@create')->name('grounds.create');

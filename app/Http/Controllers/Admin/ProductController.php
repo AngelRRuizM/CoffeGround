@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -50,7 +52,7 @@ class ProductController extends Controller
         //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         //crea y guarda el nuevo tostado
@@ -63,7 +65,7 @@ class ProductController extends Controller
         $product->save();
 
         session()->flash('message', 'El nuevo producto ha sido guardado correctamente.');
-        return redirect('/admin/products');
+        return redirect(route('admin.products'));
     }
 
     /**
@@ -126,7 +128,7 @@ class ProductController extends Controller
         //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         //guarda el nuevo tostado
@@ -138,7 +140,7 @@ class ProductController extends Controller
         $product->save();
 
         session()->flash('message', 'Los cambios al producto han sido cambiados correctamente.');
-        return redirect('/admin/products');
+        return redirect(route('admin.products.show', ['product'=>$product->id]));
     }
 
     /**
@@ -154,6 +156,6 @@ class ProductController extends Controller
             return redirect()->back()->withErrors($errors);
         }
         $product->delete();
-        return redirect('admin/products/index');
+        return redirect(route('admin.products'));
     }
 }

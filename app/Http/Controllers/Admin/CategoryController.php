@@ -128,7 +128,7 @@ class CategoryController extends Controller
         $category->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect(route('admin.categories'));
+        return redirect(route('admin.categories.show', ['category'=>$category->id]));
     }
 
     /**

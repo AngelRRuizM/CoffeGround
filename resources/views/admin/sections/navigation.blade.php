@@ -45,7 +45,7 @@
                         <a href="{{ route('admin.types') }}"><i class="fa fa-tag" aria-hidden="true"></i>Tipos de café</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.toasts') }}"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>     Tostados</a>
+                        <a href="{{ route('admin.toasts') }}"><i class="fa fa-fire" aria-hidden="true"></i>Tostados</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.grounds') }}"><i class="fa fa-gavel" aria-hidden="true"></i>Molidos</a>
@@ -55,6 +55,9 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.categories') }}"><i class="fa fa-filter" aria-hidden="true"></i>Categorias</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.products') }}"><i class="fa fa-gift" aria-hidden="true"></i>Productos</a>
                     </li>
                 </ul>
             </div>
