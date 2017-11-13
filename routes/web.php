@@ -71,37 +71,37 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     //Toasts
     Route::get('tostados', 'ToastController@index')->name('toasts');
+    Route::get('tostados/crear', 'ToastController@create')->name('toasts.create');
     Route::get('tostados/{toast}', 'ToastController@show')->name('toasts.show');
-    Route::get('tostados/{toast}', 'ToastController@create')->name('toasts.create');
     Route::get('tostados/{toast}/editar', 'ToastController@edit')->name('toasts.edit');
-    Route::post('tostados/{toast}', 'ToastController@store')->name('toasts.store');
+    Route::post('tostados', 'ToastController@store')->name('toasts.store');
     Route::put('tostados/{toast}', 'ToastController@update')->name('toasts.update');
     Route::delete('tostados/{toast}', 'ToastController@destroy')->name('toasts.destroy');
 
     //Grounds
     Route::get('molidos', 'GroundController@index')->name('grounds');
+    Route::get('molidos/crear', 'GroundController@create')->name('grounds.create');
     Route::get('molidos/{ground}', 'GroundController@show')->name('grounds.show');
-    Route::get('molidos/{ground}', 'GroundController@create')->name('grounds.create');
     Route::get('molidos/{ground}/editar', 'GroundController@edit')->name('grounds.edit');
-    Route::post('molidos/{ground}', 'GroundController@store')->name('grounds.store');
+    Route::post('molidos', 'GroundController@store')->name('grounds.store');
     Route::put('molidos/{ground}', 'GroundController@update')->name('grounds.update');
     Route::delete('molidos/{ground}', 'GroundController@destroy')->name('grounds.destroy');
 
     //CoffeeCategory
     Route::get('categoriasCafe', 'CoffeeCategoryController@index')->name('coffeeCategories');
+    Route::get('categoriasCafe/crear', 'CoffeeCategoryController@create')->name('coffeeCategories.create');
     Route::get('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@show')->name('coffeeCategories.show');
-    Route::get('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@create')->name('coffeeCategories.create');
     Route::get('categoriasCafe/{coffeeCategory}/editar', 'CoffeeCategoryController@edit')->name('coffeeCategories.edit');
-    Route::post('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@store')->name('coffeeCategories.store');
+    Route::post('categoriasCafe', 'CoffeeCategoryController@store')->name('coffeeCategories.store');
     Route::put('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@update')->name('coffeeCategories.update');
     Route::delete('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@destroy')->name('coffeeCategories.destroy');
 
     //Coffee
     Route::get('cafes', 'CoffeeController@index')->name('coffees');
+    Route::get('cafes/crear', 'CoffeeController@create')->name('coffees.create');
     Route::get('cafes/{coffee}', 'CoffeeController@show')->name('coffees.show');
-    Route::get('cafes/{coffee}', 'CoffeeController@create')->name('coffees.create');
     Route::get('cafes/{coffee}/editar', 'CoffeeController@edit')->name('coffees.edit');
-    Route::post('cafes/{coffee}', 'CoffeeController@store')->name('coffees.store');
+    Route::post('cafes', 'CoffeeController@store')->name('coffees.store');
     Route::put('cafes/{coffee}', 'CoffeeController@update')->name('coffees.update');
     Route::delete('cafes/{coffee}', 'CoffeeController@destroy')->name('coffees.destroy');
 
