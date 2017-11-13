@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -45,7 +47,7 @@ class CategoryController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -57,7 +59,7 @@ class CategoryController extends Controller
         $category->save();
 
         session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/categories');
+        return redirect(route('admin.categories'));
     }
 
     /**
@@ -115,7 +117,7 @@ class CategoryController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -126,7 +128,7 @@ class CategoryController extends Controller
         $category->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect('/admin/categories');
+        return redirect(route('admin.categories'));
     }
 
     /**
@@ -143,6 +145,6 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect('admin/categories/index');
+        return redirect(route('admin.categories'));
     }
 }

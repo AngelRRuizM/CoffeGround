@@ -42,16 +42,19 @@
                         <a href="{{ route('admin.coffees') }}"><i class="fa fa-coffee" aria-hidden="true"></i>Cafés</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.types') }}"><i class="fa fa-list-alt" aria-hidden="true"></i>Tipos de café</a>
+                        <a href="{{ route('admin.types') }}"><i class="fa fa-tag" aria-hidden="true"></i>Tipos de café</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.toasts') }}"><i class="fa fa-fire" aria-hidden="true"></i>Tostados</a>
+                        <a href="{{ route('admin.toasts') }}"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>     Tostados</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.grounds') }}"><i class="fa fa-gavel" aria-hidden="true"></i>Molidos</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.coffeeCategories') }}"><i class="fa fa-list-ul" aria-hidden="true"></i>Categorias de café</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.categories') }}"><i class="fa fa-filter" aria-hidden="true"></i>Categorias</a>
                     </li>
                 </ul>
             </div>

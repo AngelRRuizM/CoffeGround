@@ -96,6 +96,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@update')->name('coffeeCategories.update');
     Route::delete('categoriasCafe/{coffeeCategory}', 'CoffeeCategoryController@destroy')->name('coffeeCategories.destroy');
 
+    //Category
+    Route::get('categorias', 'CategoryController@index')->name('categories');
+    Route::get('categorias/crear', 'CategoryController@create')->name('categories.create');
+    Route::get('categorias/{category}', 'CategoryController@show')->name('categories.show');
+    Route::get('categorias/{category}/editar', 'CategoryController@edit')->name('categories.edit');
+    Route::post('categorias', 'CategoryController@store')->name('categories.store');
+    Route::put('categorias/{category}', 'CategoryController@update')->name('categories.update');
+    Route::delete('categorias/{category}', 'CategoryController@destroy')->name('categories.destroy');
+
     //Coffee
     Route::get('cafes', 'CoffeeController@index')->name('coffees');
     Route::get('cafes/crear', 'CoffeeController@create')->name('coffees.create');
