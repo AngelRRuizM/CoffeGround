@@ -12,23 +12,31 @@ class PresentationTableSeeder extends Seeder
     public function run()
     {
          DB::table('presentations')->insert([
-        	'weight'=>'15 kg',
-            'ground_id' => 1
-        ]);
-
-         DB::table('presentations')->insert([
-        	'weight'=>'30 kg',
-            'ground_id' => 1
+            'weight'=>'15 kg',
+            'price' => 100.00,
+            'ground_id' => 1,
+            'coffee_id' =>1
         ]);
 
          DB::table('presentations')->insert([
         	'weight'=>'10 kg',
-            'ground_id' => 2
+            'price' => 100.00,
+            'ground_id' => 1,
+            'coffee_id' =>1
         ]);
 
          DB::table('presentations')->insert([
-        	'weight'=>'25 kg',
-            'ground_id' => 2
+        	'weight'=>'5 kg',
+            'price' => 100.00,
+            'ground_id' => 1,
+            'coffee_id' =>1
+        ]);
+
+         DB::table('presentations')->insert([
+        	'weight'=>'1 kg',
+            'price' => 100.00,
+            'ground_id' => 1,
+            'coffee_id' =>1
         ]);
     }
 }

@@ -27,66 +27,60 @@
                 <h3>{{ __('views.backend.section.navigation.sub_header_0') }}</h3>
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ route('admin.dashboard') }}">
-                            <i class="fa fa-home" aria-hidden="true"></i>
-                            {{ __('views.backend.section.navigation.menu_0_1') }}
-                        </a>
+                        <a href="{{ route('admin.dashboard') }}"><i class="fa fa-home" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_0_1') }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.users') }}"><i class="fa fa-users" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_1_1') }}</a>
                     </li>
                 </ul>
             </div>
+
             <div class="menu_section">
-                <h3>{{ __('views.backend.section.navigation.sub_header_1') }}</h3>
+                <h3>Café</h3>
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ route('admin.users') }}">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            {{ __('views.backend.section.navigation.menu_1_1') }}
-                        </a>
+                        <a href="{{ route('admin.coffees') }}"><i class="fa fa-coffee" aria-hidden="true"></i>Cafés</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.permissions') }}">
-                            <i class="fa fa-key" aria-hidden="true"></i>
-                            {{ __('views.backend.section.navigation.menu_1_2') }}
-                        </a>
+                        <a href="{{ route('admin.types') }}"><i class="fa fa-list-alt" aria-hidden="true"></i>Tipos de café</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.toasts') }}"><i class="fa fa-fire" aria-hidden="true"></i>Tostados</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.grounds') }}"><i class="fa fa-gavel" aria-hidden="true"></i>Molidos</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.coffeeCategories') }}"><i class="fa fa-list-ul" aria-hidden="true"></i>Categorias de café</a>
                     </li>
                 </ul>
             </div>
+            
+            <!-- /sidebar menu 
             <div class="menu_section">
                 <h3>{{ __('views.backend.section.navigation.sub_header_2') }}</h3>
 
                 <ul class="nav side-menu">
                     <li>
                         <a>
-                            <i class="fa fa-list"></i>
-                            {{ __('views.backend.section.navigation.menu_2_1') }}
-                            <span class="fa fa-chevron-down"></span>
+                            <i class="fa fa-list"></i>{{ __('views.backend.section.navigation.menu_2_1') }}<span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
                             <li>
-                                <a href="{{ route('log-viewer::dashboard') }}">
-                                    {{ __('views.backend.section.navigation.menu_2_2') }}
-                                </a>
+                                <a href="{{ route('log-viewer::dashboard') }}">{{ __('views.backend.section.navigation.menu_2_2') }}</a>
                             </li>
                             <li>
-                                <a href="{{ route('log-viewer::logs.list') }}">
-                                    {{ __('views.backend.section.navigation.menu_2_3') }}
-                                </a>
+                                <a href="{{ route('log-viewer::logs.list') }}">{{ __('views.backend.section.navigation.menu_2_3') }}</a>
                             </li>
                         </ul>
                     </li>
+                    
+                    <li>
+                        <a href="{{ route('admin.permissions') }}"><i class="fa fa-key" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_1_2') }}</a>
+                    </li>
                 </ul>
             </div>
-            <div class="menu_section">
-                <h3>{{ __('views.backend.section.navigation.sub_header_3') }}</h3>
-                <ul class="nav side-menu">
-                  <li>
-                      <a href="http://netlicensing.io/?utm_source=Laravel_Boilerplate&utm_medium=github&utm_campaign=laravel_boilerplate&utm_content=credits" target="_blank" title="Online Software License Management"><i class="fa fa-lock" aria-hidden="true"></i>NetLicensing</a>
-                  </li>
-                  <li>
-                      <a href="https://photolancer.zone/?utm_source=Laravel_Boilerplate&utm_medium=github&utm_campaign=laravel_boilerplate&utm_content=credits" target="_blank" title="Individual digital content for your next campaign"><i class="fa fa-camera-retro" aria-hidden="true"></i>Photolancer Zone</a>
-                  </li>
-                </ul>
-            </div>
+            -->
         </div>
         <!-- /sidebar menu -->
     </div>

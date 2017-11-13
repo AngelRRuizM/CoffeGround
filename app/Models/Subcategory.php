@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
-use App\Product;
-use App\Category;
+namespace App\Models;
+use App\Models\Product;
+use App\Models\Category;
 
 use Illuminate\Database\Eloquent\Model;
 

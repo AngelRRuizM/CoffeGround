@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
-use App\Coffee;
-use App\Ground;
+namespace App\Models;
+use App\Models\Coffee;
+use App\Models\Ground;
 
 use Illuminate\Database\Eloquent\Model;
 

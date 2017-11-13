@@ -19,7 +19,8 @@ class CreateCoffeesTable extends Migration
             $table->string('name_en', 100);
             $table->string('description_en', 500);
             $table->string('name_es', 100);
-            $table->string('description_es', 500);            
+            $table->string('description_es', 500);
+
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on('types')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('toast_id')->unsigned();
@@ -30,7 +31,8 @@ class CreateCoffeesTable extends Migration
         });
 
         Schema::create('coffee_image', function (Blueprint $table) {
-            $table->increments('id');          
+            $table->increments('id');
+            
             $table->integer('coffee_id')->unsigned();
             $table->foreign('coffee_id')->references('id')->on('coffees')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('image_id')->unsigned();
@@ -48,7 +50,6 @@ class CreateCoffeesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('coffee_image');
-        Schema::dropIfExists('coffee_presentation');
         Schema::dropIfExists('coffees');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
-use App\Type;
-use App\Toast;
-use App\CoffeeCategory;
-use App\Subcategory;
+namespace App\Models;
+use App\Models\Type;
+use App\Models\Toast;
+use App\Models\CoffeeCategory;
+use App\Models\Subcategory;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,7 +1,7 @@
 <?php
 
-namespace App;
-use App\Presentation;
+namespace App\Models;
+use App\Models\Presentation;
 
 use Illuminate\Database\Eloquent\Model;
 

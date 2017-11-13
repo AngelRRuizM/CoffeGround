@@ -1,7 +1,7 @@
 <?php
 
-namespace App;
-use App\Subcategory;
+namespace App\Models;
+use App\Models\Subcategory;
 
 use Illuminate\Database\Eloquent\Model;
 

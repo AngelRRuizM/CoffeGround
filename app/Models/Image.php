@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
-use App\Coffee;
-use App\Product;
+namespace App\Models;
+use App\Models\Coffee;
+use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Model;
 

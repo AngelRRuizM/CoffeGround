@@ -16,6 +16,7 @@ class CreatePresentationsTable extends Migration
         Schema::create('presentations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('weight', 15);
+            $table->decimal('price', 8, 2);
             $table->integer('ground_id')->unsigned();
             $table->foreign('ground_id')->references('id')->on('grounds')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('coffee_id')->unsigned();

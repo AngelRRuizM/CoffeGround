@@ -1,7 +1,7 @@
 <?php
 
-namespace App;
-use App\Coffee;
+namespace App\Models;
+use App\Models\Coffee;
 
 use Illuminate\Database\Eloquent\Model;
 

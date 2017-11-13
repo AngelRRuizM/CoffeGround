@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
-use App\Subcategory;
-use App\Image;
+namespace App\Models;
+use App\Models\Subcategory;
+use App\Models\Image;
 
 use Illuminate\Database\Eloquent\Model;
 

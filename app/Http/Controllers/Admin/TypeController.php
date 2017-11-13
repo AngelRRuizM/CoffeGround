@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TypeController extends Controller
 {
@@ -48,19 +50,19 @@ class TypeController extends Controller
         //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         //crea y guarda el nuevo tostado
         $type = new Type;
-        $name_en = $request->name_en;
-        $description_en = $request->description_en;
-        $name_es = $request->name_es;
-        $description_es = $request->descritpion_es;
+        $type->name_en = $request->name_en;
+        $type->description_en = $request->description_en;
+        $type->name_es = $request->name_es;
+        $type->description_es = $request->description_es;
         $type->save();
 
-        session()->flash('message', 'El nuevo tipo ha sido guardado correctamente.');
-        return redirect('/admin/types');
+        session()->flash('message', 'El nuevo tipo de café ha sido guardado correctamente.');
+        return redirect( route('admin.types') );
     }
 
     /**
@@ -120,18 +122,18 @@ class TypeController extends Controller
         //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         //guarda el nuevo tostado
-        $name_en = $request->name_en;
-        $description_en = $request->description_en;
-        $name_es = $request->name_es;
-        $description_es = $request->descritpion_es;
+        $type->name_en = $request->name_en;
+        $type->description_en = $request->description_en;
+        $type->name_es = $request->name_es;
+        $type->description_es = $request->description_es;
         $type->save();
 
-        session()->flash('message', 'Los cambios al tipo han sido guardados correctamente.');
-        return redirect('/admin/types');
+        session()->flash('message', 'Los cambios al tipo de café han sido guardados correctamente.');
+        return redirect( route('admin.types.show', ['type' => $type->id]) );
     }
 
     /**
@@ -148,6 +150,8 @@ class TypeController extends Controller
         }
 
         $type->delete();
-        return redirect('admin/types/index');
+
+        session()->flash('message', 'El tipo de café se ha eliminado correctamente.');
+        return redirect( route('admin.types') );
     }
 }

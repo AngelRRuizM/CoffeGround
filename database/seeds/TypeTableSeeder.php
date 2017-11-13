@@ -12,7 +12,7 @@ class TypeTableSeeder extends Seeder
     public function run()
     {
         DB::table('types')->insert([
-        	'name_en' => 'Bourbon'
+        	'name_en' => 'Bourbon',
         	'description_en' => 'Complex acidity, with brilliant and balanced notes',
         	'name_es' => 'Bourbon',
           'description_es' => 'Acidez compleja, con notas brillantes y equilibradas '
