@@ -14,7 +14,7 @@
         <div class="x_content">
             @include('admin.layouts.message')
             
-            <table class="table table-striped">
+            <table class="table table-striped" id="coffees-table">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -53,12 +53,18 @@
         </div>
     </div>
 </div>
-              
+
 @endsection
 
 @section('scripts')
     @parent
     {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
+
+    <script>
+        $(document).ready(function() {
+            $('#coffees-table').DataTable();
+        } );
+    </script>
 @endsection
 
 @section('styles')

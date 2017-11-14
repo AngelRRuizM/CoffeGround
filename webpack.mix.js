@@ -86,6 +86,8 @@ mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
     'node_modules/gentelella/vendors/animate.css/animate.css',
     'node_modules/gentelella/build/css/custom.css',
+
+    'resources/assets/admin/cs/datatables/jquery.dataTables.min.css',
 ], 'public/assets/admin/css/admin.css').version();
 
 
@@ -123,6 +125,7 @@ mix.scripts([
     'node_modules/jcarousel/dist/jquery.jcarousel.min.js',
 
     'resources/assets/admin/js/dashboard.js',
+    'resources/assets/admin/js/datatables/jquery.dataTables.min.js',
 ], 'public/assets/admin/js/dashboard.js').version();
 
 mix.styles([

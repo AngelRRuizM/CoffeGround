@@ -38,7 +38,7 @@ class Coffee extends Model
     }
 
     public function presentations(){
-		return $this->hasMany(Presentation::class)->withPivot('price');
+		return $this->hasMany(Presentation::class);
 	}
 
     public function images(){

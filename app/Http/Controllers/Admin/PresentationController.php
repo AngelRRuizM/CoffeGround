@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Presentation;
-use App\Models\Grounds;
+use App\Models\Ground;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PresentationController extends Controller
 {
@@ -25,7 +27,7 @@ class PresentationController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -36,8 +38,8 @@ class PresentationController extends Controller
         $presentation->coffee_id = $request->coffee_id;
         $presentation->save();
 
-        session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/presentations');
+        session()->flash('message', 'La nueva presentación se ha creado exitosamente.');
+        return redirect( route('admin.coffees.show', ['coffee' => $request->coffee_id]));
     }
 
     /**
@@ -53,7 +55,7 @@ class PresentationController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        $grounds = Type::all()->sortBy('name_es');
+        $grounds = Ground::all()->sortBy('name_es');
 
         return view('admin.presentations.edit', compact('presentation', 'grounds'));
     }
@@ -75,19 +77,18 @@ class PresentationController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
-        $presentation = new Presentation;
         $presentation->weight = $request->weight;
         $presentation->price = $request->price;
         $presentation->ground_id = $request->ground_id;
         $presentation->coffee_id = $request->coffee_id;
         $presentation->save();
 
-        session()->flash('message', 'La base de datos ha sido actualizada correctamente.');
-        return redirect('/admin/presentations');
+        session()->flash('message', 'Se ha actualizado la presentación del café.');
+        return redirect( route('admin.coffees.show', ['coffee' => $request->coffee_id]));
     }
 
     /**
@@ -102,8 +103,10 @@ class PresentationController extends Controller
             $errors = ['No se ha encontrado el id especificado.'];
             return redirect()->back()->withErrors($errors);
         }
-
+        $coffee = $presentation->coffee;
         $presentation->delete();
-        return redirect('admin/presentations/index');
+
+        session()->flash('message', 'La presentación se ha eliminado exitosamente.');
+        return redirect( route('admin.coffees.show', ['coffee' => $coffee->id]));
     }
 }

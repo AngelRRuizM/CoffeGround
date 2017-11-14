@@ -60,6 +60,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('users/{user}', 'UserController@update')->name('users.update');
     Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy');
 
+    //Images
+    Route::get('imagenes/delete/{image}', 'ImageController@destroy')->name('images.destroy');
+
+    //Presentations
+    Route::get('presentaciones/{presentation}/editar', 'PresentationController@edit')->name('presentations.edit');
+    Route::post('presentaciones', 'PresentationController@store')->name('presentations.store');
+    Route::put('presentaciones/{presentation}', 'PresentationController@update')->name('presentations.update');
+    Route::delete('presentaciones/{presentation}', 'PresentationController@destroy')->name('presentations.destroy');
+
     //Types
     Route::get('tipos', 'TypeController@index')->name('types');
     Route::get('tipos/crear', 'TypeController@create')->name('types.create');
@@ -120,6 +129,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('cafes/{coffee}', 'CoffeeController@show')->name('coffees.show');
     Route::get('cafes/{coffee}/editar', 'CoffeeController@edit')->name('coffees.edit');
     Route::post('cafes', 'CoffeeController@store')->name('coffees.store');
+    Route::post('cafes/{coffee}/images', 'ImageController@storeCoffee')->name('coffees.store.images');
     Route::put('cafes/{coffee}', 'CoffeeController@update')->name('coffees.update');
     Route::delete('cafes/{coffee}', 'CoffeeController@destroy')->name('coffees.destroy');
 

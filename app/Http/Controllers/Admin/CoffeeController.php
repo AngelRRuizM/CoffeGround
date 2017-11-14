@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Coffee;
 use App\Models\Type;
 use App\Models\Toast;
+use App\Models\Ground;
 use App\Models\CoffeeCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -89,7 +90,9 @@ class CoffeeController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        return view('admin.coffees.show', compact('coffee'));
+        $grounds = Ground::all()->sortBy('name_es');
+
+        return view('admin.coffees.show', compact('coffee', 'grounds'));
     }
 
     /**

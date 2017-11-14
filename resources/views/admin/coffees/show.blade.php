@@ -62,6 +62,11 @@
         </div>
     </div>
 </div>
+
+@include('admin.presentations.index')
+
+@include('admin.coffees.images')
+
 @endsection
 
 @section('scripts')
