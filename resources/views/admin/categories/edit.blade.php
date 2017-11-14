@@ -1,7 +1,9 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    <!-- page content -->
+<!-- page content -->
+
+<!-- Category fields form -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -15,7 +17,7 @@
             </div>
 
             <div class="x_content">
-                <form  method="POST" action="{{ route('admin.categories.update', ['category' => $category->id   ]) }}" class="form-horizontal form-label-left">
+                <form  method="POST" action="{{ route('admin.categories.update', ['category' => $category->id]) }}" class="form-horizontal form-label-left">
                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-2">
                         @include('admin.layouts.errors')
                     </div>
@@ -25,14 +27,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name_es">Nombre en español<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" id="name_es" name="name_es" class="form-control col-md-7 col-xs-12" value="{{$category->name_es}}" required>
+                            <input type="text" id="name_es" name="name_es" class="form-control col-md-7 col-xs-12" required value="{{$category->name_es}}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name_en">Nombre en inglés<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" id="name_en" name="name_en" class="form-control col-md-7 col-xs-12" value="{{$category->name_en}}" required>
+                            <input type="text" id="name_en" name="name_en" class="form-control col-md-7 col-xs-12" required value="{{$category->name_en}}">
                         </div>
                     </div>
 
@@ -50,7 +52,6 @@
                         </div>
                     </div>
                     
-                    
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -63,6 +64,11 @@
         </div>
     </div>
 </div>
+
+
+<!-- Subcategorias -->
+
+
 @endsection
 
 @section('scripts')

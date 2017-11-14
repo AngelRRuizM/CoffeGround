@@ -15,7 +15,7 @@
             </div>
 
             <div class="x_content">
-                <form  method="POST" action="{{ route('admin.products.store') }}" class="form-horizontal form-label-left">
+                <form  method="POST" action="{{ route('admin.coffees.store') }}" class="form-horizontal form-label-left">
                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-2">
                         @include('admin.layouts.errors')
                     </div>
@@ -50,6 +50,27 @@
                         </div>
                     </div>
                     
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Categoría</label>
+                        <div class="col-md-6 col-sm-9 col-xs-12">
+                            <select class="form-control" id="coffeeCategory" name="category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{$coffeeCategory->id}}">{{$category->name_es}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="subcategory">subcategory</label>
+                        <div class="col-md-6 col-sm-9 col-xs-12">
+                            <select class="form-control" id="subcategory" name="subcategory_id">
+                                @foreach($subcategories as $subcategory)
+                                    <option value="{{$subcategory->id}}">{{$subcategory->name_es}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="ln_solid"></div>
                     <div class="form-group">

@@ -4,7 +4,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Producto- {{$product->name_es}}</h2>
+            <h2>Producto - {{$product->name_es}}</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 <li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -31,7 +31,15 @@
                         <tr>
                             <th scope="row">Descripción en inglés</th>
                             <td> {{$product->description_en}} </td>
-                        </tr>    
+                        </tr>
+                        <tr>
+                            <th scope="row">Categoria</th>
+                            <td> {{$product->subcategory->category->name_es}} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Subcategoria</th>
+                            <td> {{$product->subcategory->name_es}} </td>
+                        </tr>  
                     </tbody>
                 </table>
             </div>
@@ -50,6 +58,9 @@
         </div>
     </div>
 </div>
+
+@include('admin.products.images')
+
 @endsection
 
 @section('scripts')

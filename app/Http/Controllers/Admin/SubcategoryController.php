@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Subcategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SubcategoryController extends Controller
 {
@@ -27,7 +29,7 @@ class SubcategoryController extends Controller
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -36,11 +38,11 @@ class SubcategoryController extends Controller
         $subcategory->name_en = $request->name_en;
         $subcategory->description_es = $request->description_es;
         $subcategory->description_en = $request->description_en;
-        $subcategory->category_id = $request->type_id;
+        $subcategory->category_id = $request->category_id;
         $subcategory->save();
 
-        session()->flash('message', 'El nuevo elemento ha sido guardado correctamente.');
-        return redirect('/admin/subcategories');
+        session()->flash('message', 'La nueva subcategoria ha sido guardado correctamente.');
+        return redirect(route('admin.categories.show', ['category'=>$request->category_id]));
     }
 
 
@@ -57,8 +59,9 @@ class SubcategoryController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
+        $categories = Category::all()->sortBy('name_es');
 
-        return view('admin.subcategories.edit', compact('subcategory'));
+        return view('admin.subcategories.edit', compact('subcategory', 'categories'));
     }
 
     /**
@@ -79,11 +82,12 @@ class SubcategoryController extends Controller
             'name_es' => 'required|max:100',
             'name_en' => 'required|max:100',
             'description_es' => 'required|max:500',
-            'description_en' => 'required|max:500',]);
+            'description_en' => 'required|max:500',
+            'category_id' => 'required|numeric']);
 
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         
@@ -91,10 +95,11 @@ class SubcategoryController extends Controller
         $subcategory->name_en = $request->name_en;
         $subcategory->description_es = $request->description_es;
         $subcategory->description_en = $request->description_en;
+        $subcategory->category_id = $request->category_id;
         $subcategory->save();
 
         session()->flash('message', 'La base de datos ha sido actualizada correctamente');
-        return redirect('/admin/subcategories');
+        return redirect(route('admin.categories.show', ['category' => $request->category_id]));
     }
 
     /**
@@ -109,8 +114,8 @@ class SubcategoryController extends Controller
             $errors = ['No se ha encontrado el id especificado.'];
             return redirect()->back()->withErrors($errors);
         }
-
+        $category = $subcategory->category;
         $subcategory->delete();
-        return redirect('admin/subcategories/index');
+        return redirect(route('admin.categories.show', ['category'=>$category->id]));
     }
 }

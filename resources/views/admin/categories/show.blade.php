@@ -4,7 +4,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Categoria- {{$category->name_es}}</h2>
+            <h2>Categoria - {{$category->name_es}}</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 <li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -31,7 +31,7 @@
                         <tr>
                             <th scope="row">Descripción en inglés</th>
                             <td> {{$category->description_en}} </td>
-                        </tr>    
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -50,6 +50,9 @@
         </div>
     </div>
 </div>
+
+@include('admin.subcategories.index')
+
 @endsection
 
 @section('scripts')

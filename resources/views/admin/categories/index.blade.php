@@ -14,14 +14,14 @@
         <div class="x_content">
             @include('admin.layouts.message')
             
-            <table class="table table-striped">
+            <table class="table table-striped" id="categories-table">
                 <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th></th>
-                    <th></th>
-                </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($categories as $category)
@@ -47,12 +47,18 @@
         </div>
     </div>
 </div>
-              
+
 @endsection
 
 @section('scripts')
     @parent
     {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
+
+    <script>
+        $(document).ready(function() {
+            $('#categories-table').DataTable();
+        } );
+    </script>
 @endsection
 
 @section('styles')

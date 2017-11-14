@@ -63,6 +63,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     //Images
     Route::get('imagenes/delete/{image}', 'ImageController@destroy')->name('images.destroy');
 
+    //Subcategory
+    Route::get('subcategorias/{subcategory}/editar', 'SubcategoryController@edit')->name('subcategories.edit');
+    Route::post('subcategorias', 'SubcategoryController@store')->name('subcategories.store');
+    Route::put('subcategorias/{subcategory}', 'SubcategoryController@update')->name('subcategories.update');
+    Route::delete('subcategorias/{subcategory}', 'SubcategoryController@destroy')->name('subcategories.destroy');
+
     //Presentations
     Route::get('presentaciones/{presentation}/editar', 'PresentationController@edit')->name('presentations.edit');
     Route::post('presentaciones', 'PresentationController@store')->name('presentations.store');
@@ -93,6 +99,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('productos/{product}', 'ProductController@show')->name('products.show');
     Route::get('productos/{product}/editar', 'ProductController@edit')->name('products.edit');
     Route::post('productos', 'ProductController@store')->name('products.store');
+    Route::post('productos/{product}/images', 'ImageController@storeProduct')->name('product.store.images');
     Route::put('productos/{product}', 'ProductController@update')->name('products.update');
     Route::delete('productos/{product}', 'ProductController@destroy')->name('products.destroy');
 

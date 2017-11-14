@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Subcategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,7 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::all()->sortBy('name_es');
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -97,9 +99,9 @@ class ProductController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        $subcategories = Subcategory::all()->sortBy('name_es');
-
-        return view('admin.products.edit', compact('product', 'subcategories'));
+        $categories = Category::all()->sortBy('name_es');
+        $subcategories = subCategory::all()->sortBy('name_es');
+        return view('admin.products.edit', compact('product', 'categories', 'subcategories'));
     }
 
     /**
@@ -156,6 +158,7 @@ class ProductController extends Controller
             return redirect()->back()->withErrors($errors);
         }
         $product->delete();
+        session()->flash('message', 'El producto se ha eliminado con éxito.');        
         return redirect(route('admin.products'));
     }
 }
