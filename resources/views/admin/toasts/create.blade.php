@@ -15,7 +15,7 @@
             </div>
 
             <div class="x_content">
-                <form  method="POST" action="{{ route('admin.types.store') }}" class="form-horizontal form-label-left">
+                <form  method="POST" action="{{ route('admin.toasts.store') }}" class="form-horizontal form-label-left">
                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-2">
                         @include('admin.layouts.errors')
                     </div>
@@ -54,7 +54,7 @@
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a href="{{ route('admin.types') }}"><button class="btn btn-primary" type="button">Cancelar</button></a>
+                            <a href="{{ route('admin.toasts') }}"><button class="btn btn-primary" type="button">Cancelar</button></a>
                             <button class="btn btn-primary" type="reset">Reiniciar</button>
                             <button type="submit" class="btn btn-success">Crear</button>
                         </div>

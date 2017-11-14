@@ -5,9 +5,9 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Lista de tipos de café</h2>
+            <h2>Lista de tostados</h2>
             <ul class="nav navbar-right panel_toolbox">
-                <li><a href="{{ route('admin.types.create') }}"><button type="button" class="btn btn-success">Crear tipo de café</button></a></li>
+                <li><a href="{{ route('admin.toasts.create') }}"><button type="button" class="btn btn-success">Crear nuevo tostado</button></a></li>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -21,19 +21,22 @@
                     <th>Descripción</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($types as $type)
+                    @foreach($toasts as $toast)
                         <tr>
-                            <th scope="row"> {{$type->name_es}} </th>
-                            <td> {{$type->description_es}} </td>
+                            <th scope="row"> {{$toast->name_es}} </th>
+                            <td> {{$toast->description_es}} </td>
                             <td>
-                                <a href="{{ route('admin.types.show', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.types.edit', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
+                                <a href="{{ route('admin.toasts.show', ['toast_id' => $toast->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
                             </td>
                             <td>
-                                <form method="POST" action="{{ route('admin.types.destroy', ['type_id' => $type->id   ]) }}" accept-charset="UTF-8">
+                                <a href="{{ route('admin.toasts.edit', ['toast_id' => $toast->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
+                            </td>
+                            <td>
+                                <form method="POST" action="{{ route('admin.toasts.destroy', ['toast_id' => $toast->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <input class="btn btn-danger" type="submit" value="Eliminar">

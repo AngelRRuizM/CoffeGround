@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Toast;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ToastController extends Controller
 {
@@ -48,19 +50,19 @@ class ToastController extends Controller
         //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         //crea y guarda el nuevo tostado
         $toast = new Toast;
-        $name_en = $request->name_en;
-        $description_en = $request->description_en;
-        $name_es = $request->name_es;
-        $description_es = $request->descritpion_es;
+        $toast->name_en = $request->name_en;
+        $toast->description_en = $request->description_en;
+        $toast->name_es = $request->name_es;
+        $toast->description_es = $request->description_es;
         $toast->save();
 
         session()->flash('message', 'El nuevo tipo de tostado ha sido guardado correctamente.');
-        return redirect('/admin/toasts');
+        return redirect(route('admin.toasts'));
     }
 
     /**
@@ -120,18 +122,18 @@ class ToastController extends Controller
         //regresa a la página anterior si hubo algún error en los datos recibidos.
         if($validator->fails()){
             return redirect()->back()
-                ->withInput($request)
+                ->withInput($request->all())
                 ->withErrors($validator);
         }
         //guarda los cambios al tostado
-        $name_en = $request->name_en;
-        $description_en = $request->description_en;
-        $name_es = $request->name_es;
-        $description_es = $request->descritpion_es;
+        $toast->name_en = $request->name_en;
+        $toast->description_en = $request->description_en;
+        $toast->name_es = $request->name_es;
+        $toast->description_es = $request->description_es;
         $toast->save();
 
         session()->flash('message', 'Los cambios al tostado han sido guardados correctamente.');
-        return redirect('/admin/toasts');
+        return redirect(route('admin.toasts.show', ['toast' => $toast->id]));
     }
 
     /**
@@ -148,6 +150,6 @@ class ToastController extends Controller
         }
         
         $toast->delete();
-        return redirect('admin/toasts/index');
+        return redirect(route('admin.toasts'));
     }
 }
