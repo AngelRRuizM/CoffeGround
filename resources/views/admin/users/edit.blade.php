@@ -88,40 +88,6 @@
                 @endif
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">
-                        {{ __('views.admin.users.edit.password') }}
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="password" type="password" class="form-control col-md-7 col-xs-12 @if($errors->has('password')) parsley-error @endif"
-                               name="password">
-                        @if($errors->has('password'))
-                            <ul class="parsley-errors-list filled">
-                                @foreach($errors->get('password') as $error)
-                                    <li class="parsley-required">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password_confirmation">
-                        {{ __('views.admin.users.edit.confirm_password') }}
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="password_confirmation" type="password" class="form-control col-md-7 col-xs-12 @if($errors->has('password_confirmation')) parsley-error @endif"
-                               name="password_confirmation">
-                        @if($errors->has('password_confirmation'))
-                            <ul class="parsley-errors-list filled">
-                                @foreach($errors->get('password_confirmation') as $error)
-                                    <li class="parsley-required">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="roles">
                         {{ __('views.admin.users.edit.roles') }}
                     </label>

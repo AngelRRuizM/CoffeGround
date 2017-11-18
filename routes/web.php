@@ -148,7 +148,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 });
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/cafes', 'HomeController@cindex')->name('cofffees');
+Route::get('/cafes/{coffee}', 'HomeController@cshow')->name('coffees.show');
+Route::get('/productos', 'HomeController@pindex')->name('products');
+Route::get('/productos/{product}', 'HomeController@pshow')->name('products.show');
+Route::get('/usuario/{user}/carrito', 'HomeController@cart')->name('cart');
+
+Route::post('/usuario/{user}/cafes', 'CartController@cadd')->name('store.coffee.cart');
+Route::post('/usuario/{user}/productos', 'CartController@padd')->name('store.product.cart');
+Route::delete('/usuario/{user}/cafes', 'CartController@cdestroy')->name('destroy.coffee.cart');
+Route::delete('/usuario/{user}/productos', 'CartController@pdestroy')->name('destroy.product.cart');
 
 /**
  * Membership

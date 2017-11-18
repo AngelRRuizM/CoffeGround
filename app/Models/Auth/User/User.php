@@ -11,6 +11,7 @@ use App\Models\Auth\User\Traits\Ables\Rolable;
 use App\Models\Auth\User\Traits\Scopes\UserScopes;
 use App\Models\Auth\User\Traits\Relations\UserRelations;
 use Kyslik\ColumnSortable\Sortable;
+use App\Models\Cart;
 
 /**
  * App\Models\Auth\User\User
@@ -89,4 +90,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Representat la relacion n a 1 de User con cart
+     */
+    public function cartst(){
+    	return $this->hasMany(Cart::class);
+    }
 }

@@ -83,18 +83,10 @@ class UserController extends Controller
             return strtolower($input->email) != strtolower($user->email);
         });
 
-        $validator->sometimes('password', 'min:6|confirmed', function ($input) {
-            return $input->password;
-        });
-
         if ($validator->fails()) return redirect()->back()->withErrors($validator->errors());
 
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-
-        if ($request->has('password')) {
-            $user->password = bcrypt($request->get('password'));
-        }
 
         $user->active = $request->get('active', 0);
         $user->confirmed = $request->get('confirmed', 0);
