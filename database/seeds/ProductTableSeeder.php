@@ -16,7 +16,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto1',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 1
+            'subcategory_id' => 1,
+            'price' => 50
 
         ]);
 
@@ -25,7 +26,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto2',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 1
+            'subcategory_id' => 1,
+            'price' => 50
 
         ]);
 
@@ -34,7 +36,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto3',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 2
+            'subcategory_id' => 2,
+            'price' => 40
 
         ]);
 
@@ -43,7 +46,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto4',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 2
+            'subcategory_id' => 2,
+            'price' => 40
 
         ]);
 
@@ -52,7 +56,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto5',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 3
+            'subcategory_id' => 3,
+            'price' => 45
 
         ]);
 
@@ -61,7 +66,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto6',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 3
+            'subcategory_id' => 3,
+            'price' => 45
 
         ]);
 
@@ -70,7 +76,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto7',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 4
+            'subcategory_id' => 4,
+            'price' => 70
 
         ]);
 
@@ -79,7 +86,8 @@ class ProductTableSeeder extends Seeder
             'description_en' => 'Woralex',
             'name_es' => 'Producto8',
             'description_es' => 'Guau. ',
-            'subcategory_id' => 4
+            'subcategory_id' => 4,
+            'price' => 70
 
         ]);
     }
