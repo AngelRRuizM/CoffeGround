@@ -48,7 +48,7 @@ Route::group(['namespace' => 'Auth'], function () {
 /**
  * Backend routes
  */
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['admin']], function () {
 
     // Dashboard
     Route::get('/', 'DashboardController@index')->name('dashboard');
@@ -99,7 +99,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('productos/{product}', 'ProductController@show')->name('products.show');
     Route::get('productos/{product}/editar', 'ProductController@edit')->name('products.edit');
     Route::post('productos', 'ProductController@store')->name('products.store');
-    Route::post('productos/{product}/images', 'ImageController@storeProduct')->name('product.store.images');
+    Route::post('productos/{product}/images', 'ImageController@storeProduct')->name('products.store.images');
     Route::put('productos/{product}', 'ProductController@update')->name('products.update');
     Route::delete('productos/{product}', 'ProductController@destroy')->name('products.destroy');
 
@@ -129,6 +129,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('categorias', 'CategoryController@store')->name('categories.store');
     Route::put('categorias/{category}', 'CategoryController@update')->name('categories.update');
     Route::delete('categorias/{category}', 'CategoryController@destroy')->name('categories.destroy');
+    Route::get('/categorias/{category}/subcategorias', 'SubcategoryController@options')->name('categories.subcategories');
 
     //Coffee
     Route::get('cafes', 'CoffeeController@index')->name('coffees');

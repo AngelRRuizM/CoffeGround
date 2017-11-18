@@ -20,7 +20,7 @@ class UsersRolesSeeder extends Seeder
 
         $data = [
             'admin@coffeeground.com' => ['administrator', 'authenticated'],
-            'subadmin@coffeeground.com' => ['administrator', 'authenticated'],
+            'subadmin@coffeeground.com' => ['subadministrator', 'authenticated'],
             'user@coffeeground.com' => 'authenticated',
         ];
 

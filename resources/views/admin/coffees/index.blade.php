@@ -34,10 +34,8 @@
                             <td> {{$coffee->type->name_es}} </td>
                             <td> {{$coffee->toast->name_es}} </td>
                             <td> {{$coffee->coffeeCategory->name_es}} </td>
-                            <td>
-                                <a href="{{ route('admin.coffees.show', ['coffee_id' => $coffee->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.coffees.edit', ['coffee_id' => $coffee->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
-                            </td>
+                            <td><a href="{{ route('admin.coffees.show', ['coffee_id' => $coffee->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>
+                            <td><a href="{{ route('admin.coffees.edit', ['coffee_id' => $coffee->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route('admin.coffees.destroy', ['coffee_id' => $coffee->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}

@@ -118,7 +118,7 @@ return [
         /*
          * Whether or not the user has to confirm their email when signing up
          */
-        'confirm_email' => true,
+        'confirm_email' => false,
 
         /*
          * Whether or not the users email can be changed on the edit profile screen
@@ -134,7 +134,7 @@ return [
         /**
          * Disable social login for roles
          */
-        'except_roles' => ['administrator'],
+        'except_roles' => ['administrator', 'subadministrator'],
 
         /*
         * Socialite session variable name

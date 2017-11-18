@@ -28,10 +28,8 @@
                         <tr>
                             <th scope="row"> {{$type->name_es}} </th>
                             <td> {{$type->description_es}} </td>
-                            <td>
-                                <a href="{{ route('admin.types.show', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.types.edit', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
-                            </td>
+                            <td><a href="{{ route('admin.types.show', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>
+                            <td><a href="{{ route('admin.types.edit', ['type_id' => $type->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route('admin.types.destroy', ['type_id' => $type->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}

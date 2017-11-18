@@ -33,7 +33,7 @@
         <!-- Owl Carousel -->
         <link rel="stylesheet" href="assets/home/css/owl.carousel.min.css">
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="assets/home/css/style.1.css">
+        <link rel="stylesheet" href="assets/home/css/style.2.css">
         <!-- Modernizr -->
         <script type="text/javascript" src="assets/home/js/modernizr.custom.79639.min.js"></script>
     </head>

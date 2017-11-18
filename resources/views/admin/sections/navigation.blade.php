@@ -1,8 +1,8 @@
-<div class="col-md-3 left_col">
+<div class="col-md-3 left_col menu_fixed">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{ route('admin.dashboard') }}" class="site_title">
-                <span>{{ config('app.name') }}</span>
+                <span>Coffeegound</span>
             </a>
         </div>
 
@@ -23,8 +23,8 @@
 
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        @if(auth()->user()->hasRole('administrator'))
             <div class="menu_section">
-                <h3>{{ __('views.backend.section.navigation.sub_header_0') }}</h3>
                 <ul class="nav side-menu">
                     <li>
                         <a href="{{ route('admin.dashboard') }}"><i class="fa fa-home" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_0_1') }}</a>
@@ -34,6 +34,7 @@
                     </li>
                 </ul>
             </div>
+        @endif
 
             <div class="menu_section">
                 <h3>Café</h3>
@@ -53,11 +54,17 @@
                     <li>
                         <a href="{{ route('admin.coffeeCategories') }}"><i class="fa fa-list-ul" aria-hidden="true"></i>Categorias de café</a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.categories') }}"><i class="fa fa-filter" aria-hidden="true"></i>Categorias</a>
-                    </li>
+                </ul>
+            </div>
+
+            <div class="menu_section">
+                <h3>Productos</h3>
+                <ul class="nav side-menu">
                     <li>
                         <a href="{{ route('admin.products') }}"><i class="fa fa-gift" aria-hidden="true"></i>Productos</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.categories') }}"><i class="fa fa-filter" aria-hidden="true"></i>Categorias</a>
                     </li>
                 </ul>
             </div>

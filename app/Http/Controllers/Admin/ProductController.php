@@ -59,11 +59,11 @@ class ProductController extends Controller
         }
         //crea y guarda el nuevo tostado
         $product = new Product;
-        $name_en = $request->name_en;
-        $description_en = $request->description_en;
-        $name_es = $request->name_es;
-        $description_es = $request->descritpion_es;
-        $subcategory_id = $request->subcategory_id;
+        $product->name_en = $request->name_en;
+        $product->description_en = $request->description_en;
+        $product->name_es = $request->name_es;
+        $product->description_es = $request->description_es;
+        $product->subcategory_id = $request->subcategory_id;
         $product->save();
 
         session()->flash('message', 'El nuevo producto ha sido guardado correctamente.');
@@ -134,11 +134,11 @@ class ProductController extends Controller
                 ->withErrors($validator);
         }
         //guarda el nuevo tostado
-        $name_en = $request->name_en;
-        $description_en = $request->description_en;
-        $name_es = $request->name_es;
-        $description_es = $request->descritpion_es;
-        $subcategory_id = $request->subcategory_id;
+        $product->name_en = $request->name_en;
+        $product->description_en = $request->description_en;
+        $product->name_es = $request->name_es;
+        $product->description_es = $request->description_es;
+        $product->subcategory_id = $request->subcategory_id;
         $product->save();
 
         session()->flash('message', 'Los cambios al producto han sido cambiados correctamente.');

@@ -28,10 +28,8 @@
                         <tr>
                             <th scope="row"> {{$coffeeCategory->name_es}} </th>
                             <td> {{$coffeeCategory->description_es}} </td>
-                            <td>
-                                <a href="{{ route('admin.coffeeCategories.show', ['coffeeCategory_id' => $coffeeCategory->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.coffeeCategories.edit', ['coffeeCategory_id' => $coffeeCategory->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
-                            </td>
+                            <td><a href="{{ route('admin.coffeeCategories.show', ['coffeeCategory_id' => $coffeeCategory->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>
+                            <td><a href="{{ route('admin.coffeeCategories.edit', ['coffeeCategory_id' => $coffeeCategory->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route('admin.coffeeCategories.destroy', ['coffeeCategory_id' => $coffeeCategory->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}

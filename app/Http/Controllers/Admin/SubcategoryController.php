@@ -10,7 +10,17 @@ use Illuminate\Support\Facades\Validator;
 
 class SubcategoryController extends Controller
 {
-    
+    /**
+     * Guarda una nueva instancia de subcategoria con los campos proporcionados
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function options(Category $category)
+    {
+        $view = view('admin.subcategories.options', compact('category'));
+        return $view->render();
+    }
 
     /**
      * Guarda una nueva instancia de subcategoria con los campos proporcionados

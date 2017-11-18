@@ -14,7 +14,7 @@
         <div class="x_content">
             @include('admin.layouts.message')
             
-            <table class="table table-striped" id="coffees-table">
+            <table class="table table-striped" id="products-table">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -32,10 +32,8 @@
                             <td> {{$product->description_es}} </td>
                             <td> {{$product->subcategory->category->name_es}} </td>
                             <td> {{$product->subcategory->name_es}} </td>
-                            <td>
-                                <a href="{{ route('admin.products.show', ['product_id' => $product->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.products.edit', ['product_id' => $product->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
-                            </td>
+                            <td><a href="{{ route('admin.products.show', ['product_id' => $product->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>
+                            <td><a href="{{ route('admin.products.edit', ['product_id' => $product->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route('admin.products.destroy', ['product_id' => $product->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}

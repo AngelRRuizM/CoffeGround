@@ -28,10 +28,8 @@
                         <tr>
                             <th scope="row"> {{$ground->name_es}} </th>
                             <td> {{$ground->description_es}} </td>
-                            <td>
-                                <a href="{{ route('admin.grounds.show', ['ground_id' => $ground->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.grounds.edit', ['ground_id' => $ground->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
-                            </td>
+                            <td><a href="{{ route('admin.grounds.show', ['ground_id' => $ground->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>
+                            <td><a href="{{ route('admin.grounds.edit', ['ground_id' => $ground->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route('admin.grounds.destroy', ['ground' => $ground->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}

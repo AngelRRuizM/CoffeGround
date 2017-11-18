@@ -15,7 +15,7 @@
             </div>
 
             <div class="x_content">
-                <form  method="POST" action="{{ route('admin.coffees.store') }}" class="form-horizontal form-label-left">
+                <form  method="POST" action="{{ route('admin.products.store') }}" class="form-horizontal form-label-left">
                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-2">
                         @include('admin.layouts.errors')
                     </div>
@@ -53,9 +53,9 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Categoría</label>
                         <div class="col-md-6 col-sm-9 col-xs-12">
-                            <select class="form-control" id="coffeeCategory" name="category_id">
+                            <select class="form-control" id="category" name="category_id">
                                 @foreach($categories as $category)
-                                    <option value="{{$coffeeCategory->id}}">{{$category->name_es}}</option>
+                                    <option value="{{$category->id}}">{{$category->name_es}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="subcategory">subcategory</label>
                         <div class="col-md-6 col-sm-9 col-xs-12">
                             <select class="form-control" id="subcategory" name="subcategory_id">
-                                @foreach($subcategories as $subcategory)
+                                @foreach($category->subcategories as $subcategory)
                                     <option value="{{$subcategory->id}}">{{$subcategory->name_es}}</option>
                                 @endforeach
                             </select>
@@ -90,6 +90,19 @@
 @section('scripts')
     @parent
     {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
+
+    <script>
+        $(document).ready(function() {
+            $("#category").change( function(){
+                $.get( ("/admin/categorias/" + $("#category").val() + "/subcategorias" ),
+                    function(data){
+                        $("#subcategory").empty();
+                        $("#subcategory").html(data);
+                    }
+                );
+            });
+        });
+    </script>
 @endsection
 
 @section('styles')

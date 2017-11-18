@@ -106,6 +106,20 @@
 @section('scripts')
     @parent
     {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
+
+    <script>
+        $(document).ready(function() {
+            $("#category").change( function(){
+                $.get( ("/admin/categorias/" + $("#category").val() + "/subcategorias" ),
+                    function(data){
+                        $("#subcategory").empty();
+                        $("#subcategory").html(data);
+                    }
+                );
+            });
+        });
+    </script>
+
 @endsection
 
 @section('styles')

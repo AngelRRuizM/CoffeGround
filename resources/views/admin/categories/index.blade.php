@@ -28,10 +28,8 @@
                         <tr>
                             <th scope="row"> {{$category->name_es}} </th>
                             <td> {{$category->description_es}} </td>
-                            <td>
-                                <a href="{{ route('admin.categories.show', ['category_id' => $category->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a>
-                                <a href="{{ route('admin.categories.edit', ['category_id' => $category->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a>
-                            </td>
+                            <td><a href="{{ route('admin.categories.show', ['category_id' => $category->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>
+                            <td><a href="{{ route('admin.categories.edit', ['category_id' => $category->id]) }}"><button type="button" class="btn btn-primary">Editar</button></a></td>
                             <td>
                                 <form method="POST" action="{{ route('admin.categories.destroy', ['category_id' => $category->id   ]) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}
@@ -53,12 +51,6 @@
 @section('scripts')
     @parent
     {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
-
-    <script>
-        $(document).ready(function() {
-            $('#categories-table').DataTable();
-        } );
-    </script>
 @endsection
 
 @section('styles')

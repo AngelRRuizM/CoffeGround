@@ -147,4 +147,15 @@ class CategoryController extends Controller
         $category->delete();
         return redirect(route('admin.categories'));
     }
+
+    /**
+     * Quita la categoria seleccionada de la base de datos
+     *
+     * @param  \App\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function subcategories(Category $category)
+    {
+        return $category->subcategories;
+    }
 }
