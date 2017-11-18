@@ -48,6 +48,7 @@ class ProductController extends Controller
             'description_en' => 'required|max:500',
             'name_es' => 'required|max:100',
             'description_es' => 'required|max:500',
+            'price' => 'required|min:0|numeric',
             'subcategory_id' => 'required|numeric',
         ]);
 
@@ -63,6 +64,7 @@ class ProductController extends Controller
         $product->description_en = $request->description_en;
         $product->name_es = $request->name_es;
         $product->description_es = $request->description_es;
+        $product->price = $request->price;
         $product->subcategory_id = $request->subcategory_id;
         $product->save();
 
@@ -124,6 +126,7 @@ class ProductController extends Controller
             'description_en' => 'required|max:500',
             'name_es' => 'required|max:100',
             'description_es' => 'required|max:500',
+            'price' => 'required|min:0|numeric',
             'subcategory_id' => 'required|numeric',
         ]);
 
@@ -138,6 +141,7 @@ class ProductController extends Controller
         $product->description_en = $request->description_en;
         $product->name_es = $request->name_es;
         $product->description_es = $request->description_es;
+        $product->price = $request->price;
         $product->subcategory_id = $request->subcategory_id;
         $product->save();
 

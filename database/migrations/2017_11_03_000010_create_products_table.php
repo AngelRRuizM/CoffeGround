@@ -19,7 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('name_en', 100);
             $table->string('description_en', 500);  
             $table->string('name_es', 100);
-            $table->string('description_es', 500);            
+            $table->string('description_es', 500);  
+            $table->decimal('price', 8, 2);          
             $table->integer('subcategory_id')->unsigned();
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

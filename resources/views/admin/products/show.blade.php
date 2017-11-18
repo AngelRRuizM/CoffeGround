@@ -33,6 +33,10 @@
                             <td> {{$product->description_en}} </td>
                         </tr>
                         <tr>
+                            <th scope="row">Precio</th>
+                            <td> {{$product->price}} </td>
+                        </tr>
+                        <tr>
                             <th scope="row">Categoria</th>
                             <td> {{$product->subcategory->category->name_es}} </td>
                         </tr>
