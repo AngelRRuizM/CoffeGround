@@ -23,7 +23,7 @@ class Cart extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo(Type::class);
+    	return $this->belongsTo(User::class);
     }
 
     public function presentations(){

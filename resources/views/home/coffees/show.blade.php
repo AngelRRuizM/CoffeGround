@@ -69,20 +69,20 @@
                                         <!-- item -->
                                         <div class="col-sm-12">
                                             @foreach($coffee->presentations as $presentation)
-                                            <div class="menu-item has-border clearfix">
-                                                <div class="item-details pull-left">
-                                                    <p>Contenido: {{$presentation->weight}}</p>
-                                                    @if(true)
-                                                        <p>Molido: {{$presentation->ground->name_es}}</p>    
-                                                    @else
-                                                        <p>Molido: {{$presentation->ground->name_en}}</p>
-                                                    @endif
+                                                <div class="menu-item has-border clearfix">
+                                                    <div class="item-details pull-left">
+                                                        <p>Contenido: {{$presentation->weight}}</p>
+                                                        @if(true)
+                                                            <p>Molido: {{$presentation->ground->name_es}}</p>    
+                                                        @else
+                                                            <p>Molido: {{$presentation->ground->name_en}}</p>
+                                                        @endif
+                                                    </div>
+                                                    <div class="item-price pull-right">
+                                                        <strong class="text-large text-primary">${{$presentation->price}}</strong>
+                                                        <a href="#" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
+                                                    </div>
                                                 </div>
-                                                <div class="item-price pull-right">
-                                                    <strong class="text-large text-primary">${{$presentation->price}}</strong>
-                                                    <a href="#" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
-                                                </div>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>

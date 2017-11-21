@@ -33,8 +33,8 @@ class CartController extends Controller
             $lan = true;
         }
 
-        $products =  $user->carts->first()->products();
-        $coffees = $user->carts->first()->presentations();
+        $products =  $user->carts->first()->products;
+        $coffees = $user->carts->first()->presentations;
 
         return view('home.cart', compact('products', 'coffees', 'lan'));
     }

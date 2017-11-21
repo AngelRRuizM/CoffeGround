@@ -1,93 +1,64 @@
-@extends('auth.layouts.auth')
-
-@section('body_class','login')
+@extends('home.layouts.master')
 
 @section('content')
-    <div>
-        <div class="login_wrapper">
-            <div class="animate form login_form">
-                <section class="login_content">
-                    {{ Form::open(['route' => 'login']) }}
-                        <h1>{{ __('views.auth.login.header') }}</h1>
+<!-- Booking Section -->
+<section id="booking" class="booking">
+    <div class="container text-center">
+        <div class="row">
+            <div class="form-holder col-md-10 col-md-push-1 text-center">
+                <div class="ribbon">
+                    <i class="fa fa-star"></i>
+                </div>
 
-                        <div>
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                                   placeholder="{{ __('views.auth.login.input_0') }}" required autofocus>
-                        </div>
-                        <div>
-                            <input id="password" type="password" class="form-control" name="password"
-                                   placeholder="{{ __('views.auth.login.input_1') }}" required>
-                        </div>
-                        <div class="checkbox al_left">
-                            <label>
-                                <input type="checkbox"
-                                       name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('views.auth.login.input_2') }}
+                <h2>{{ __('views.auth.login.header') }}</h2>
+
+                {{ Form::open(['route' => 'login']) }}
+                    <div class="row">
+                        <div class="col-md-10 col-md-push-1">
+                            <label for="email" class="col-sm-12 unique">{{ __('views.auth.login.input_0') }}
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                             </label>
-                        </div>
 
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                            <label for="password" class="col-sm-12 unique">{{ __('views.auth.login.input_1') }}
+                                <input id="password" type="password" class="form-control" name="password" value="{{ old('email') }}" required autofocus>
+                            </label>    
 
-                        @if (!$errors->isEmpty())
-                            <div class="alert alert-danger" role="alert">
-                                {!! $errors->first() !!}
-                            </div>
-                        @endif
-
-                        <div>
-                            <button class="btn btn-default submit" type="submit">{{ __('views.auth.login.action_0') }}</button>
-                            <a class="reset_pass" href="{{ route('password.request') }}">
-                                {{ __('views.auth.login.action_1') }}
-                            </a>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <div class="separator">
-                            <span>{{ __('views.auth.login.message_0') }}</span>
-                            <div>
-                                <a href="{{ route('social.redirect', ['google']) }}" class="btn btn-success btn-google-plus">
-                                    <i class="fa fa-google-plus"></i>
-                                    Google+
-                                </a>
-                                <a href="{{ route('social.redirect', ['facebook']) }}" class="btn btn-success btn-facebook">
-                                    <i class="fa fa-facebook"></i>
-                                    Facebook
-                                </a>
-                                <a href="{{ route('social.redirect', ['twitter']) }}" class="btn btn-success btn-twitter">
-                                    <i class="fa fa-twitter"></i>
-                                    Twitter
-                                </a>
-                            </div>
-                        </div>
-
-                        @if(config('auth.users.registration'))
-                            <div class="separator">
-                                <p class="change_link">{{ __('views.auth.login.message_1') }}
-                                    <a href="{{ route('register') }}" class="to_register"> {{ __('views.auth.login.action_2') }} </a>
-                                </p>
-
-                                <div class="clearfix"></div>
-                                <br/>
-
-                                <div>
-                                    <div class="h1">{{ config('app.name') }}</div>
-                                    <p>&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('views.auth.login.copyright') }}</p>
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
                                 </div>
+                            @endif
+
+                            @if (!$errors->isEmpty())
+                                <div class="alert alert-danger" role="alert">
+                                    {!! $errors->first() !!}
+                                </div>
+                            @endif
+
+                            <div>
+                                <button class="btn btn-default submit" type="submit">{{ __('views.auth.login.action_0') }}</button>
+                                <a class="reset_pass" href="{{ route('password.request') }}">
+                                    {{ __('views.auth.login.action_1') }}
+                                </a>
                             </div>
-                        @endif
-                    {{ Form::close() }}
-                </section>
+
+                            <div class="clearfix"></div>
+
+                            @if(config('auth.users.registration'))
+                                <div class="separator">
+                                    <p class="change_link">{{ __('views.auth.login.message_1') }}
+                                        <a href="{{ route('register') }}" class="to_register"> {{ __('views.auth.login.action_2') }} </a>
+                                    </p>
+                                    <div class="clearfix"></div>
+                                    <br/>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                {{ Form::close() }}
             </div>
         </div>
     </div>
-@endsection
-
-@section('styles')
-    @parent
-
-    {{ Html::style(mix('assets/auth/css/login.css')) }}
+</section>
+<!-- End Booking Section -->
 @endsection

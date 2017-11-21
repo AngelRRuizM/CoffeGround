@@ -6,7 +6,7 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     *pc
      * @return void
      */
     public function run()
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
          //$this->call(ImageTableSeeder::class);
          $this->call(PresentationTableSeeder::class);
          $this->call(ProductTableSeeder::class);
-         $this->call(CartsTableSeeder::class);
+         $this->call(CartTableSeeder::class);
          
          
     }

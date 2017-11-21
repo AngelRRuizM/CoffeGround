@@ -1,81 +1,72 @@
-@extends('auth.layouts.auth')
-
-@section('body_class','register')
+@extends('home.layouts.master')
 
 @section('content')
-    <div>
-        <div class="login_wrapper">
-            <div class="animate form">
-                <section class="login_content">
-                    {{ Form::open(['route' => 'register']) }}
-                        <h1>{{ __('views.auth.register.header') }}</h1>
-                        <div>
-                            <input type="text" name="name" class="form-control"
-                                   placeholder="{{ __('views.auth.register.input_0') }}"
-                                   value="{{ old('name') }}" required autofocus/>
-                        </div>
-                        <div>
-                            <input type="email" name="email" class="form-control"
-                                   placeholder="{{ __('views.auth.register.input_1') }}"
-                                   required/>
-                        </div>
-                        <div>
-                            <input type="password" name="password" class="form-control"
-                                   placeholder="{{ __('views.auth.register.input_2') }}"
-                                   required=""/>
-                        </div>
-                        <div>
-                            <input type="password" name="password_confirmation" class="form-control"
-                                   placeholder="{{ __('views.auth.register.input_3') }}"
-                                   required/>
-                        </div>
+<!-- Booking Section -->
+<section id="booking" class="booking">
+    <div class="container text-center">
+        <div class="row">
+            <div class="form-holder col-md-10 col-md-push-1 text-center">
+                <div class="ribbon">
+                    <i class="fa fa-star"></i>
+                </div>
 
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                <h2>{{ __('views.auth.register.header') }}</h2>
 
-                        @if (!$errors->isEmpty())
-                            <div class="alert alert-danger" role="alert">
-                                {!! $errors->first() !!}
-                            </div>
-                        @endif
+                {{ Form::open(['route' => 'register']) }}
+                    <div class="row">
+                        <div class="col-md-10 col-md-push-1">
+                            <label for="name" class="col-sm-12 unique">{{ __('views.auth.register.input_0') }}
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            </label>
+                            
+                            <label for="email" class="col-sm-12 unique">{{ __('views.auth.register.input_1') }}
+                                <input id="email" type="email" class="form-control" name="email" required autofocus>
+                            </label>
 
-                        @if(config('auth.captcha.registration'))
-                            @captcha()
-                        @endif
+                            <label for="password" class="col-sm-12 unique">{{ __('views.auth.register.input_2') }}
+                                <input id="password" type="password" class="form-control" name="password" value="{{ old('email') }}" required autofocus>
+                            </label>
 
-                        <div>
-                            <button type="submit"
-                                    class="btn btn-default submit">{{ __('views.auth.register.action_1') }}</button>
-                        </div>
+                            <label for="password_confirmation" class="col-sm-12 unique">{{ __('views.auth.register.input_3') }}
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" value="{{ old('email') }}" required autofocus>
+                            </label>
 
-                        <div class="clearfix"></div>
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
 
-                        <div class="separator">
-                            <p class="change_link">{{ __('views.auth.register.message') }}
-                                <a href="{{ route('login') }}" class="to_register"> {{ __('views.auth.register.action_2') }} </a>
-                            </p>
+                            @if (!$errors->isEmpty())
+                                <div class="alert alert-danger" role="alert">
+                                    {!! $errors->first() !!}
+                                </div>
+                            @endif
 
-                            <div class="clearfix"></div>
-                            <br/>
+                            @if(config('auth.captcha.registration'))
+                                @captcha()
+                            @endif
 
                             <div>
-                                <div class="h1">{{ config('app.name') }}</div>
-                                <p>&copy; {{ date('Y') }} {{ config('app.name') }}. {{ __('views.auth.register.copyright_0') }}</p>
-                                <p>{{ __('views.auth.register.copyright_1') }}</p>
+                                <button type="submit" class="btn btn-default submit">{{ __('views.auth.register.action_1') }}</button>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            <div class="separator">
+                                <p class="change_link">{{ __('views.auth.register.message') }}
+                                    <a href="{{ route('login') }}" class="to_register"> {{ __('views.auth.register.action_2') }} </a>
+                                </p>
+
+                                <div class="clearfix"></div>
+                                <br/>
                             </div>
                         </div>
-                    {{ Form::close() }}
-                </section>
+                    </div>
+                {{ Form::close() }}
             </div>
         </div>
     </div>
-@endsection
-
-@section('styles')
-    @parent
-
-    {{ Html::style(mix('assets/auth/css/register.css')) }}
+</section>
+<!-- End Booking Section -->
 @endsection

@@ -14,8 +14,13 @@
                     <li><a href="{{ route('coffees') }}">Catálogo de cafés</a></li>
                     <li><a href="{{ route('products') }}">Productos</a></li>
                 </ul>
-                <a href="#" class="btn navbar-btn btn-unique hidden-sm hidden-xs" id="open-reservation">Inicia sesión</a>
-                <a href="#" class="btn navbar-btn btn-unique hidden-sm hidden-xs" id="open-reservation">Registrarse</a>
+                @if(!Auth::check())
+                    <a href="{{ route('login') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Inicia sesión</a>
+                    <a href="{{ route('register') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Registrarse</a>
+                @else
+                    <a href="{{ route('cart') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Ir a carrito</a>
+                    <a href="{{ route('logout') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Cerrar sesión</a>
+                @endif
             </div>
         </div>
     </nav>

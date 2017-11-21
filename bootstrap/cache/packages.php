@@ -1,15 +1,4 @@
 <?php return array (
-  'laracasts/utilities' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laracasts\\Utilities\\JavaScript\\JavaScriptServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'JavaScript' => 'Laracasts\\Utilities\\JavaScript\\JavaScriptFacade',
-    ),
-  ),
   'albertcht/invisible-recaptcha' => 
   array (
     'providers' => 
@@ -66,6 +55,17 @@
     'providers' => 
     array (
       0 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    ),
+  ),
+  'laracasts/utilities' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laracasts\\Utilities\\JavaScript\\JavaScriptServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'JavaScript' => 'Laracasts\\Utilities\\JavaScript\\JavaScriptFacade',
     ),
   ),
 );

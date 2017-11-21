@@ -94,7 +94,7 @@ class User extends Authenticatable
     /**
      * Representat la relacion n a 1 de User con cart
      */
-    public function cartst(){
+    public function carts(){
     	return $this->hasMany(Cart::class);
     }
 }
