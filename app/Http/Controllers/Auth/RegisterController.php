@@ -81,6 +81,10 @@ class RegisterController extends Controller
             'confirmation_code' => Uuid::uuid4(),
             'confirmed' => false
         ]);
+        
+        $cart = new Cart;
+        $cart->user_id = $user->id;
+        $cart->save();
 
         if (config('auth.users.default_role')) {
             $user->roles()->attach(Role::firstOrCreate(['name' => config('auth.users.default_role')]));

@@ -3,83 +3,133 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+
+use App;
+use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Presentation;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+     /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
+    }
+
+    public function cart()
+    {
+        $user = auth()->user();
+
+        if(App::getLocale() == 'en'){
+            $lan = false;
+        }
+        else{
+            $lan = true;
+        }
+
+        $products =  $user->carts->first()->products();
+        $coffees = $user->carts->first()->presentations();
+
+        return view('home.cart', compact('products', 'coffees', 'lan'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Añade una presentacion al carrito
      *
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function cadd(Presentation $presentation)
     {
-        //
+        $user = auth()->user();
+        
+        if($user == null || $presentation == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        if(App::getLocale() == 'en'){
+            $lan = true;
+        }
+        else{
+            $lan = false;
+        }
+
+        $user->cart->firts()->presentations->attach($presentation);
+
+        return redirect( route('coffees.show', ['coffee' => $presentation->id]));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Añade un producto al carrito
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function padd(Product $product)
     {
-        //
+        $user = auth()->user();
+
+        if($user == null || $product == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        if(App::getLocale() == 'en'){
+            $lan = true;
+        }
+        else{
+            $lan = false;
+        }
+
+        $user->carts->first()->products->attach($product);
+
+        return redirect( route('products.show', ['product' => $product->id]));
     }
 
     /**
-     * Display the specified resource.
+     * Quita una presentacion al carrito
      *
-     * @param  \App\Cart  $cart
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function cdestroy(Presentation $presentation)
     {
-        //
+        $user = auth()->user();
+
+        if($user == null || $presentation == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $user->carts->first()->presentations->detach($presentation);
+
+        return redirect( route('cart', ['user' => $user->id]));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Quita un producto al carrito
      *
-     * @param  \App\Cart  $cart
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function pdestroy(Product $product)
     {
-        //
-    }
+        $user = auth()->user();
+        
+        if($user == null || $product == null){
+            $errors = ['No se ha encontrado el id especificado.'];
+            return redirect()->back()->withErrors($errors);
+        }
+        
+        $user->carts->first()->products->detach($product);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cart $cart)
-    {
-        //
+        return redirect( route('cart', ['user' => $user->id]));
     }
 }

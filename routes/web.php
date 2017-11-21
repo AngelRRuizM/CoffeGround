@@ -154,12 +154,12 @@ Route::get('/cafes', 'HomeController@cindex')->name('coffees');
 Route::get('/cafes/{coffee}', 'HomeController@cshow')->name('coffees.show');
 Route::get('/productos', 'HomeController@pindex')->name('products');
 Route::get('/productos/{product}', 'HomeController@pshow')->name('products.show');
-Route::get('/usuario/{user}/carrito', 'HomeController@cart')->name('cart');
 
-Route::post('/usuario/{user}/cafes', 'CartController@cadd')->name('store.coffee.cart');
-Route::post('/usuario/{user}/productos', 'CartController@padd')->name('store.product.cart');
-Route::delete('/usuario/{user}/cafes', 'CartController@cdestroy')->name('destroy.coffee.cart');
-Route::delete('/usuario/{user}/productos', 'CartController@pdestroy')->name('destroy.product.cart');
+Route::get('/usuario/carrito', 'CartController@cart')->name('cart');
+Route::post('/usuario/cafes/{presentation}', 'CartController@cadd')->name('store.coffee.cart');
+Route::post('/usuario/productos/{product}', 'CartController@padd')->name('store.product.cart');
+Route::delete('/usuario/cafes/{presentation}', 'CartController@cdestroy')->name('destroy.coffee.cart');
+Route::delete('/usuario/productos/{product}', 'CartController@pdestroy')->name('destroy.product.cart');
 
 /**
  * Membership
