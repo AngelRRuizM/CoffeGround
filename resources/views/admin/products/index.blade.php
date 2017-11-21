@@ -19,6 +19,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Descripción</th>
+                        <th>Precio</th>
                         <th>Categoria</th>
                         <th>Subcategoria</th>
                         <th></th>
@@ -30,6 +31,7 @@
                         <tr>
                             <th scope="row"> {{$product->name_es}} </th>
                             <td> {{$product->description_es}} </td>
+                            <td> {{$product->price}} </td>
                             <td> {{$product->subcategory->category->name_es}} </td>
                             <td> {{$product->subcategory->name_es}} </td>
                             <td><a href="{{ route('admin.products.show', ['product_id' => $product->id]) }}"><button type="button" class="btn btn-info">Detalles</button></a></td>

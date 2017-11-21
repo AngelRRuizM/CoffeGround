@@ -18,7 +18,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name_en', 'description_en', 'name_es', 'description_es', 'subcategory_id',];
+        'name_en', 'description_en', 'name_es', 'description_es', 'price', 'subcategory_id',];
 
     public function subcategory(){
 		return $this->belongsTo(Subcategory::class);
