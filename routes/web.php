@@ -150,7 +150,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/cafes', 'HomeController@cindex')->name('cofffees');
+Route::get('/cafes', 'HomeController@cindex')->name('coffees');
 Route::get('/cafes/{coffee}', 'HomeController@cshow')->name('coffees.show');
 Route::get('/productos', 'HomeController@pindex')->name('products');
 Route::get('/productos/{product}', 'HomeController@pshow')->name('products.show');
