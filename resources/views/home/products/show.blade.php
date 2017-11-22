@@ -50,7 +50,7 @@
                         <p class="lead">{{$product->description_en}}</p>
                     @endif
 
-                     <a href="#" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
+                     <a href="{{route('store.product.cart', ['product' => $product->id])}}" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
                 </div>
             </div>
         </div>

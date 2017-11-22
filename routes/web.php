@@ -156,10 +156,10 @@ Route::get('/productos', 'HomeController@pindex')->name('products');
 Route::get('/productos/{product}', 'HomeController@pshow')->name('products.show');
 
 Route::get('/usuario/carrito', 'CartController@cart')->name('cart');
-Route::post('/usuario/cafes/{presentation}', 'CartController@cadd')->name('store.coffee.cart');
-Route::post('/usuario/productos/{product}', 'CartController@padd')->name('store.product.cart');
-Route::delete('/usuario/cafes/{presentation}', 'CartController@cdestroy')->name('destroy.coffee.cart');
-Route::delete('/usuario/productos/{product}', 'CartController@pdestroy')->name('destroy.product.cart');
+Route::get('/usuario/cafes/{presentation}', 'CartController@addPresentation')->name('store.coffee.cart');
+Route::get('/usuario/productos/{product}', 'CartController@addProduct')->name('store.product.cart');
+Route::delete('/usuario/cafes/{presentation}', 'CartController@destroyPresentation')->name('destroy.coffee.cart');
+Route::delete('/usuario/productos/{product}', 'CartController@destroyProduct')->name('destroy.product.cart');
 
 /**
  * Membership

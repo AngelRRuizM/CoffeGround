@@ -45,25 +45,18 @@ class CartController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function cadd(Presentation $presentation)
+    public function addPresentation(Presentation $presentation)
     {
         $user = auth()->user();
-        
-        if($user == null || $presentation == null){
-            $errors = ['No se ha encontrado el id especificado.'];
-            return redirect()->back()->withErrors($errors);
-        }
 
-        if(App::getLocale() == 'en'){
+        if(App::getLocale() == 'en')
             $lan = true;
-        }
-        else{
+        else
             $lan = false;
-        }
 
-        $user->cart->firts()->presentations->attach($presentation);
+        $user->carts->first()->presentations()->attach($presentation);
 
-        return redirect( route('coffees.show', ['coffee' => $presentation->id]));
+        return redirect( route('cart'));
     }
 
     /**
@@ -72,25 +65,18 @@ class CartController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function padd(Product $product)
+    public function addProduct(Product $product)
     {
         $user = auth()->user();
-
-        if($user == null || $product == null){
-            $errors = ['No se ha encontrado el id especificado.'];
-            return redirect()->back()->withErrors($errors);
-        }
-
-        if(App::getLocale() == 'en'){
+        
+        if(App::getLocale() == 'en')
             $lan = true;
-        }
-        else{
+        else
             $lan = false;
-        }
+        
 
-        $user->carts->first()->products->attach($product);
-
-        return redirect( route('products.show', ['product' => $product->id]));
+        $user->carts->first()->products()->attach($product);
+        return redirect( route('cart'));
     }
 
     /**
@@ -99,18 +85,12 @@ class CartController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function cdestroy(Presentation $presentation)
+    public function destroyPresentation(Presentation $presentation)
     {
         $user = auth()->user();
+        $user->carts->first()->presentations()->detach($presentation);
 
-        if($user == null || $presentation == null){
-            $errors = ['No se ha encontrado el id especificado.'];
-            return redirect()->back()->withErrors($errors);
-        }
-
-        $user->carts->first()->presentations->detach($presentation);
-
-        return redirect( route('cart', ['user' => $user->id]));
+        return redirect( route('cart'));
     }
 
     /**
@@ -119,17 +99,11 @@ class CartController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function pdestroy(Product $product)
+    public function destroyProduct(Product $product)
     {
         $user = auth()->user();
-        
-        if($user == null || $product == null){
-            $errors = ['No se ha encontrado el id especificado.'];
-            return redirect()->back()->withErrors($errors);
-        }
-        
-        $user->carts->first()->products->detach($product);
+        $user->carts->first()->products()->detach($product);
 
-        return redirect( route('cart', ['user' => $user->id]));
+        return redirect( route('cart'));
     }
 }

@@ -80,7 +80,7 @@
                                                     </div>
                                                     <div class="item-price pull-right">
                                                         <strong class="text-large text-primary">${{$presentation->price}}</strong>
-                                                        <a href="#" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
+                                                        <a href="{{route('store.coffee.cart', ['presentation' => $presentation->id])}}" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
                                                     </div>
                                                 </div>
                                             @endforeach
