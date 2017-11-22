@@ -52,12 +52,10 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price">Precio</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="number" step=".1"  min="0" max="999999.99" id="price" name="price" class="form-control col-md-7 col-xs-12" value="{{$product->price}}" required>
-                            </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price">Precio</label>
+                        <div class="col-md-6 col-sm-9 col-xs-12">
+                            <input type="number" step=".1"  min="0" max="999999.99" id="price" name="price" class="form-control col-md-7 col-xs-12" value="{{$product->price}}" required>
                         </div>
                     </div>
                     
@@ -119,7 +117,7 @@
     <script>
         $(document).ready(function() {
             $("#category").change( function(){
-                $.get( ("/admin/categorias/" + $("#category").val() + "/subcategorias" ),
+                $.get( ("/categorias/" + $("#category").val() + "/subcategorias" ),
                     function(data){
                         $("#subcategory").empty();
                         $("#subcategory").html(data);

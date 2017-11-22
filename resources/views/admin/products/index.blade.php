@@ -5,7 +5,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Lista de cafés</h2>
+            <h2>Lista de productos</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a href="{{ route('admin.products.create') }}"><button type="button" class="btn btn-success">Crear producto</button></a></li>
             </ul>
@@ -56,12 +56,11 @@
 
 @section('scripts')
     @parent
-    {{ Html::script(mix('assets/admin/js/dashboard.js')) }}
 
     <script>
         $(document).ready(function() {
             $('#products-table').DataTable();
-        } );
+        });
     </script>
 @endsection
 
