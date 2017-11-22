@@ -17,7 +17,7 @@
                     <h3>{{ __('store.filter') }}</h3>
                 </header>
 
-                <form method="get" action="#" id="contact-form">
+                <form id="filters">
                     <div class="row">
                         <label for="user-name" class="col-sm-12 unique">{{ __('store.category') }}</label>
                         <select class="col-sm-12" name="category" id="category" required>
@@ -51,31 +51,35 @@
             </div>
         </div>
 
-        <div class="col-md-9">
-            @foreach($products as $product)
-                <div class="col-md-6"> 
-                    <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                        <div class="dish">
-                            <div class="profile">
-                                <img src="assets/home/img/dish-c.png" class="img-responsive" alt="dish name">
-                            </div>
-                            <div class="text">
-                                @if($lan)
-                                    <h4>{{$product->name_es}}</h4>
-                                    <p>{{$product->description_es}}</p>    
-                                @else
-                                    <h4>{{$product->name_en}}</h4>
-                                    <p>{{$product->description_en}}</p>
-                                @endif
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-
+        <div class="col-md-9" id="products">
+            @include('home.products.list')
         </div>
-
     </div>
 </section>
 <!-- End Dishes Section -->
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $("#filters").submit(function(e){
+        $.get( ("/filter/products?" + $(this).serialize()),
+            function(data){
+                $('#products').empty();
+                $('#products').html(data);
+            }
+        );
+        e.preventDefault();
+    });
+
+    $("#category").change( function(){
+        $.get( ("/categorias/" + $("#category").val() + "/subcategorias" ),
+            function(data){
+                $("#subcategory").empty();
+                $("#subcategory").html(data);
+            }
+        );
+    });
+});
+</script>
 @endsection

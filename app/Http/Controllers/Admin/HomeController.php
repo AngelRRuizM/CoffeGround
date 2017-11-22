@@ -96,15 +96,83 @@ class HomeController extends Controller
     */
     public function pshow(Product $product)
     {
-        if(App::getLocale() == 'en'){
+        if(App::getLocale() == 'en')
             $lan = false;
-        }
-            
-        else{
+        else
             $lan = true;
-        }
         
         return view('home.products.show', compact('product', 'lan'));
     }
 
+    /**
+    * Muestra las especificaciones de un café
+    *
+    * @param  \App\Coffee  $coffee
+    * @return \Illuminate\Http\Response
+    */
+    public function filterCoffees()
+    {
+        if(App::getLocale() == 'en')
+            $lan = false;
+        else
+            $lan = true;
+
+        $query = null;
+
+        if(request('coffee_category') > 0){
+            $query = Coffee::where('coffee_category_id', request('coffee_category'));
+        }
+
+        if(request('type') > 0){
+            if($query != null)
+                $query = $query->where('type_id', request('type'));
+            else
+                $query = Coffee::where('type_id', request('type'));
+        }
+            
+        if(request('toast') > 0){
+            if($query != null)
+                $query = $query->where('toast_id', request('toast'));
+            else
+                $query = Coffee::where('toast_id', request('toast'));
+        }
+
+        if($query == null)
+            $coffees = Coffee::all();
+        else
+            $coffees = $query->get();
+        
+        $view = view('home.coffees.list', compact('coffees', 'lan'));
+        return $view->render();
+    }
+
+    public function filterProducts()
+    {
+        if(App::getLocale() == 'en')
+            $lan = false;
+        else
+            $lan = true;
+
+        $query = null;
+
+        if(request('category') > 0){
+            $subcategories = Subcategory::where('category_id', request('category'))->get(['id'])->toArray();
+            $query = Product::whereIn('subcategory_id', $subcategories);
+        }
+
+        if(request('subcategory') > 0){
+            if($query != null)
+                $query = $query->where('subcategory_id', request('subcategory'));
+            else
+                $query = Product::where('subcategory_id', request('subcategory'));
+        }
+
+        if($query == null)
+            $products = Product::all();
+        else
+            $products = $query->get();
+        
+        $view = view('home.products.list', compact('products', 'lan'));
+        return $view->render();
+    }
 }

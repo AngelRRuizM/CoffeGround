@@ -154,6 +154,10 @@ Route::get('/cafes', 'HomeController@cindex')->name('coffees');
 Route::get('/cafes/{coffee}', 'HomeController@cshow')->name('coffees.show');
 Route::get('/productos', 'HomeController@pindex')->name('products');
 Route::get('/productos/{product}', 'HomeController@pshow')->name('products.show');
+Route::get('/filter/coffees', 'HomeController@filterCoffees')->name('coffees.filter');
+Route::get('/filter/products', 'HomeController@filterProducts')->name('product.filter');
+Route::get('/categorias/{category}/subcategorias', 'Admin\SubcategoryController@options')->name('categories.subcategories');
+
 
 Route::get('/usuario/carrito', 'CartController@cart')->name('cart');
 Route::get('/usuario/cafes/{presentation}', 'CartController@addPresentation')->name('store.coffee.cart');

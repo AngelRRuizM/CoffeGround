@@ -17,9 +17,9 @@
                     <h3>{{ __('store.filter') }}</h3>
                 </header>
 
-                <form method="get" action="#" id="contact-form">
+                <form id="filters">
                     <div class="row">
-                        <label for="user-name" class="col-sm-12 unique">{{ __('store.category') }}</label>
+                        <label for="coffee_category" class="col-sm-12 unique">{{ __('store.category') }}</label>
                         <select class="col-sm-12" name="coffee_category" id="coffee_category" required>
                             <option  value="0" selected>{{ __('store.all') }}</option>
                             @foreach($coffeeCategories as $coffeeCategory)
@@ -31,7 +31,7 @@
                             @endforeach
                         </select>
                         
-                        <label for="user-name" class="col-sm-12 unique">{{ __('store.type') }}</label>
+                        <label for="type" class="col-sm-12 unique">{{ __('store.type') }}</label>
                         <select class="col-sm-12" name="type" id="type" required>
                             <option value="0" selected>{{ __('store.all') }}</option>
                             @foreach($types as $type)
@@ -43,8 +43,8 @@
                             @endforeach
                         </select>
 
-                        <label for="user-name" class="col-sm-12 unique">{{ __('store.toast') }}</label>
-                        <select class="col-sm-12" name="toats" id="toats" required>
+                        <label for="toast" class="col-sm-12 unique">{{ __('store.toast') }}</label>
+                        <select class="col-sm-12" name="toast" id="toast" required>
                             <option value="0" selected>{{ __('store.all') }}</option>
                             @foreach($toasts as $toats)
                                 @if($lan)
@@ -56,37 +56,37 @@
                         </select>
                         
                         <div class="col-sm-12">
-                            <button type="submit" class="btn-unique btn-xs" id="submit">{{ __('store.filter') }}</button>
+                            <button type="submit" id="submit" class="btn-unique btn-xs">{{ __('store.filter') }}</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="col-md-9">
-            @foreach($coffees as $coffee)
-                <div class="col-md-6">
-                    <a href="{{ route('coffees.show', ['coffee' => $coffee->id]) }}">
-                        <div class="dish">
-                            <div class="profile">
-                                <img src="assets/home/img/dish-c.png" class="img-responsive" alt="dish name">
-                            </div>
-                            <div class="text">
-                                @if($lan)
-                                    <h4>{{$coffee->name_es}}</h4>
-                                    <p>{{$coffee->description_es}}</p>    
-                                @else
-                                    <h4>{{$coffee->name_en}}</h4>
-                                    <p>{{$coffee->description_en}}</p>
-                                @endif
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
+        <div class="col-md-9" id="coffees">
+            @include('home.coffees.list')
         </div>
 
     </div>
 </section>
 <!-- End Dishes Section -->
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $("#filters").submit(function(e){
+        console.log("/filter/coffees?" + $("#filters").serialize());
+        $.get( ("/filter/coffees?" + $(this).serialize()),
+            function(data){
+                console.log("/filter?" + $("#filters").serialize());
+                console.log(data);
+                $('#coffees').empty();
+                $('#coffees').html(data);
+            }
+        );
+        e.preventDefault();
+    });
+})  ;
+</script>
 @endsection

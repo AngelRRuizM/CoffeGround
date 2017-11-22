@@ -28,8 +28,8 @@
                                         <div class="item-details pull-left">
                                             @if($lan)
                                                 <h4> {{$presentation->coffee->name_es}}</h4>
-                                                <p>{{ __('store.category') }}: {{$presentation->coffee->coffeeCategory->name_es}}</p>
-                                                <p>{{ __('store.type') }}: {{$presentation->coffee->type->name_es}}</p>
+                                                <p>{{ __('store.category') }} {{$presentation->coffee->coffeeCategory->name_es}}</p>
+                                                <p>{{ __('store.type') }} {{$presentation->coffee->type->name_es}}</p>
                                                 <p>{{ __('store.toast') }}: {{$presentation->coffee->toast->name_es}}</p>
                                                 </br>
                                                 <form method="POST" action="{{ route('destroy.coffee.cart', ['presentation' => $presentation->id]) }}" accept-charset="UTF-8">
@@ -39,8 +39,8 @@
                                                 </form>
                                             @else
                                                 <h4> {{$presentation->coffee->name_en}}</h4>
-                                                <p>{{ __('store.category') }}: {{$presentation->coffee->coffeeCategory->name_en}}</p>
-                                                <p>{{ __('store.type') }}: {{$presentation->coffee->type->name_en}}</p>
+                                                <p>{{ __('store.category') }} {{$presentation->coffee->coffeeCategory->name_en}}</p>
+                                                <p>{{ __('store.type') }} {{$presentation->coffee->type->name_en}}</p>
                                                 <p>{{ __('store.toast') }}: {{$presentation->coffee->toast->name_en}}</p>
                                                 <form method="POST" action="{{ route('destroy.coffee.cart', ['presentation' => $presentation->id]) }}" accept-charset="UTF-8">
                                                 {{ csrf_field() }}
@@ -53,11 +53,11 @@
                                             <strong class="text-large text-primary">${{$presentation->price}}</strong>                                        
                                             @if($lan)
                                                 <p>{{ __('store.content') }}: {{$presentation->weight}}</p>
-                                                <p>{{ __('store.ground') }}: {{$presentation->ground->name_es}}</p>
+                                                <p>{{ __('store.ground') }} {{$presentation->ground->name_es}}</p>
                                                 <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="1" required></p>
                                             @else
                                                 <p>{{ __('store.content') }}: {{$presentation->weight}}</p>
-                                                <p>{{ __('store.ground') }}: {{$presentation->ground->name_en}}</p>
+                                                <p>{{ __('store.ground') }} {{$presentation->ground->name_en}}</p>
                                                 <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="1" required></p>
                                             @endif
                                         </div>
@@ -75,8 +75,8 @@
                                         <div class="item-details pull-left">
                                             @if($lan)
                                                 <h4> {{$product->name_es}}</h4>
-                                                <p>{{ __('store.category') }}: {{$product->subcategory->category->name_es}}</p>
-                                                <p>{{ __('store.subcategory') }}: {{$product->subcategory->name_es}}</p>
+                                                <p>{{ __('store.category') }} {{$product->subcategory->category->name_es}}</p>
+                                                <p>{{ __('store.subcategory') }} {{$product->subcategory->name_es}}</p>
                                                 </br>
                                                 <form method="POST" action="{{ route('destroy.product.cart', ['product' => $product->id]) }}" accept-charset="UTF-8">
                                                     {{ csrf_field() }}
@@ -85,8 +85,9 @@
                                                 </form>
                                             @else
                                                 <h4> {{$product->name_en}}</h4>
-                                                <p>{{ __('store.category') }}: {{$product->subcategory->category->name_en}}</p>
-                                                <p>{{ __('store.category') }}: {{$product->subcategory->name_en}}</p>
+                                                <p>{{ __('store.category') }} {{$product->subcategory->category->name_en}}</p>
+                                                <p>{{ __('store.category') }} {{$product->subcategory->name_en}}</p>
+                                                </br>
                                                 <form method="POST" action="{{ route('destroy.product.cart', ['product' => $product->id]) }}" accept-charset="UTF-8">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}

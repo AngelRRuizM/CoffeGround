@@ -103,7 +103,7 @@
     <script>
         $(document).ready(function() {
             $("#category").change( function(){
-                $.get( ("/admin/categorias/" + $("#category").val() + "/subcategorias" ),
+                $.get( ("/categorias/" + $("#category").val() + "/subcategorias" ),
                     function(data){
                         $("#subcategory").empty();
                         $("#subcategory").html(data);
