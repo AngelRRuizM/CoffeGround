@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Auth\Role\Role;
+use App\Models\Cart;
 use App\Notifications\Auth\ConfirmEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;

@@ -161,6 +161,10 @@ Route::get('/usuario/productos/{product}', 'CartController@addProduct')->name('s
 Route::delete('/usuario/cafes/{presentation}', 'CartController@destroyPresentation')->name('destroy.coffee.cart');
 Route::delete('/usuario/productos/{product}', 'CartController@destroyProduct')->name('destroy.product.cart');
 
+Route::group(['middleware' => ['web']], function () {
+    Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+});
+
 /**
  * Membership
  */

@@ -8,18 +8,18 @@
             </div>
             <div id="navigation" class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Inicio</a></li>
-                    <li><a href="/#about">Sobre nosotros</a></li>
-                    <li><a href="/#contact">Contacto</a></li>
-                    <li><a href="{{ route('coffees') }}">Catálogo de cafés</a></li>
-                    <li><a href="{{ route('products') }}">Productos</a></li>
+                    <li class="active"><a href="/">{{ __('home') }}</a></li>
+                    <li><a href="/#about">{{ __('home.about') }}</a></li>
+                    <li><a href="/#contact">{{ __('home.contact') }}</a></li>
+                    <li><a href="{{ route('coffees') }}">{{ __('home.coffee.store') }}</a></li>
+                    <li><a href="{{ route('products') }}">{{ __('home.products') }}</a></li>
                 </ul>
                 @if(!Auth::check())
-                    <a href="{{ route('login') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Inicia sesión</a>
-                    <a href="{{ route('register') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Registrarse</a>
+                    <a href="{{ route('login') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">{{ __('views.auth.login.action_0') }}</a>
+                    <a href="{{ route('register') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">{{ __('views.auth.login.action_2') }}</a>
                 @else
-                    <a href="{{ route('cart') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Ir a carrito</a>
-                    <a href="{{ route('logout') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Cerrar sesión</a>
+                    <a href="{{ route('cart') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">{{ __('home.cart') }}</a>
+                    <a href="{{ route('logout') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">{{ __('views.welcome.logout') }}</a>
                 @endif
             </div>
         </div>

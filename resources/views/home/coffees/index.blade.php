@@ -5,8 +5,8 @@
 <section id="dishes" class="dishes">
     <div class="container text-center">
         <header>
-            <h2>Catálogo de café</h2>
-            <h3>Todo nuestro repertorio de café producido en México</h3>
+            <h2>{{ __('store.coffeeCatalogue') }}</h2>
+            <h3>{{ __('store.coffeeCatalogue.description') }}</h3>
         </header>
         <!-- Set up your HTML -->
         <!-- sidebar -->
@@ -14,16 +14,16 @@
         <div class="col-md-3">
             <div class="form-holder">
                 <header>
-                    <h3>Filtros</h3>
+                    <h3>{{ __('store.filter') }}</h3>
                 </header>
 
                 <form method="get" action="#" id="contact-form">
                     <div class="row">
-                        <label for="user-name" class="col-sm-12 unique">Categoria</label>
+                        <label for="user-name" class="col-sm-12 unique">{{ __('store.category') }}</label>
                         <select class="col-sm-12" name="coffee_category" id="coffee_category" required>
-                            <option  value="0" selected>Todas</option>
+                            <option  value="0" selected>{{ __('store.all') }}</option>
                             @foreach($coffeeCategories as $coffeeCategory)
-                                @if(true)
+                                @if($lan)
                                     <option value="{{$coffeeCategory->id}}">{{ $coffeeCategory->name_es}}</option>
                                 @else
                                     <option value="{{$coffeeCategory->id}}">{{ $coffeeCategory->name_en}}</option>
@@ -31,11 +31,11 @@
                             @endforeach
                         </select>
                         
-                        <label for="user-name" class="col-sm-12 unique">Tipo</label>
+                        <label for="user-name" class="col-sm-12 unique">{{ __('store.type') }}</label>
                         <select class="col-sm-12" name="type" id="type" required>
-                            <option value="0" selected>Todos</option>
+                            <option value="0" selected>{{ __('store.all') }}</option>
                             @foreach($types as $type)
-                                @if(true)
+                                @if($lan)
                                     <option value="{{$type->id}}">{{ $type->name_es}}</option>
                                 @else
                                     <option value="{{$type->id}}">{{ $type->name_en}}</option>
@@ -43,11 +43,11 @@
                             @endforeach
                         </select>
 
-                        <label for="user-name" class="col-sm-12 unique">Tostado</label>
+                        <label for="user-name" class="col-sm-12 unique">{{ __('store.toast') }}</label>
                         <select class="col-sm-12" name="toats" id="toats" required>
-                            <option value="0" selected>Todos</option>
+                            <option value="0" selected>{{ __('store.all') }}</option>
                             @foreach($toasts as $toats)
-                                @if(true)
+                                @if($lan)
                                     <option value="{{$toats->id}}">{{ $toats->name_es}}</option>
                                 @else
                                     <option value="{{$toats->id}}">{{ $toats->name_en}}</option>
@@ -56,7 +56,7 @@
                         </select>
                         
                         <div class="col-sm-12">
-                            <button type="submit" class="btn-unique btn-xs" id="submit">Filtrar</button>
+                            <button type="submit" class="btn-unique btn-xs" id="submit">{{ __('store.filter') }}</button>
                         </div>
                     </div>
                 </form>
@@ -72,7 +72,7 @@
                                 <img src="assets/home/img/dish-c.png" class="img-responsive" alt="dish name">
                             </div>
                             <div class="text">
-                                @if(true)
+                                @if($lan)
                                     <h4>{{$coffee->name_es}}</h4>
                                     <p>{{$coffee->description_es}}</p>    
                                 @else

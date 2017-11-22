@@ -5,7 +5,7 @@
 <section id="events" class="events">
     <div class="container">
         <header class="text-center">
-            @if(true)
+            @if($lan)
                 <h2>{{$coffee->name_es}}</h2>
             @else
                 <h2>{{$coffee->name_en}}</h2>
@@ -40,15 +40,15 @@
             <!-- Details Side  -->
             <div class="col-sm-6">
                 <div class="details">
-                    @if(true)
-                        <h4 class="text-primary">Categoria | {{$coffee->coffeeCategory->name_es}}</h4>
-                        <h4 class="text-primary">Tostado | {{$coffee->toast->name_es}}</h4>
-                        <h4 class="text-primary">Tipo | {{$coffee->type->name_es}}</h4>
+                    @if($lan)
+                        <h4 class="text-primary">{{ __('store.category') }} | {{$coffee->coffeeCategory->name_es}}</h4>
+                        <h4 class="text-primary">{{ __('store.toast') }} | {{$coffee->toast->name_es}}</h4>
+                        <h4 class="text-primary">{{ __('store.type') }} | {{$coffee->type->name_es}}</h4>
                         <p class="lead">{{$coffee->description_es}}</p>
                     @else
-                         <h4 class="text-primary">Categoria | {{$coffee->coffeeCategory->name_en}}</h4>
-                        <h4 class="text-primary">Tostado | {{$coffee->toast->name_en}}</h4>
-                        <h4 class="text-primary">Tipo | {{$coffee->type->name_en}}</h4>
+                         <h4 class="text-primary">{{ __('store.category') }} | {{$coffee->coffeeCategory->name_en}}</h4>
+                        <h4 class="text-primary">{{ __('store.toast') }} | {{$coffee->toast->name_en}}</h4>
+                        <h4 class="text-primary">{{ __('store.type') }} | {{$coffee->type->name_en}}</h4>
                         <p class="lead">{{$coffee->description_en}}</p>
                     @endif
 
@@ -57,7 +57,7 @@
                         <div class="menu">
                             <!-- Tabs Navigatin -->
                             <ul class="nav nav-tabs text-center has-border" role="tablist">
-                                <li role="presentation" class="active"><a href="#presentations" aria-controls="breakfast" role="tab" data-toggle="tab">Presentaciones del café</a></li>
+                                <li role="presentation" class="active"><a href="#presentations" aria-controls="breakfast" role="tab" data-toggle="tab">{{ __('store.presentation') }}</a></li>
                             </ul>
 
                             <!-- Tab panes -->
@@ -71,16 +71,16 @@
                                             @foreach($coffee->presentations as $presentation)
                                                 <div class="menu-item has-border clearfix">
                                                     <div class="item-details pull-left">
-                                                        <p>Contenido: {{$presentation->weight}}</p>
-                                                        @if(true)
-                                                            <p>Molido: {{$presentation->ground->name_es}}</p>    
+                                                        <p>{{ __('store.content') }} {{$presentation->weight}}</p>
+                                                        @if($lan)
+                                                            <p>{{ __('store.ground') }} {{$presentation->ground->name_es}}</p>    
                                                         @else
-                                                            <p>Molido: {{$presentation->ground->name_en}}</p>
+                                                            <p>{{ __('store.ground') }} {{$presentation->ground->name_en}}</p>
                                                         @endif
                                                     </div>
                                                     <div class="item-price pull-right">
                                                         <strong class="text-large text-primary">${{$presentation->price}}</strong>
-                                                        <a href="{{route('store.coffee.cart', ['presentation' => $presentation->id])}}" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">Agregar a carrito</a>
+                                                        <a href="{{route('store.coffee.cart', ['presentation' => $presentation->id])}}" class="btn navbar-btn btn-unique btn-xs hidden-sm hidden-xs">{{ __('store.add.cart') }}</a>
                                                     </div>
                                                 </div>
                                             @endforeach

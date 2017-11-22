@@ -5,30 +5,39 @@
                 <div class="header">
                     <img src="assets/home/img/logo-footer.png" alt="italiano" width="100">
                 </div>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <p>{{ __('footer.description') }}</p>
             </div>
 
             <div class="col-md-4 contact">
                 <div class="header">
-                    <h6>Contact</h6>
+                    <h6>{{ __('footer.contact') }}</h6>
                 </div>
                 <ul class="contact list-unstyled">
-                    <li><span class="icon-map text-primary"></span>Basioun, 23 July st, Egypt</li>
-                    <li><a href="mailto:Italiano@Company.com"><span class="icon-phone text-primary"></span>Italiano@Company.com</a></li>
-                    <li><span class="icon-mail text-primary"></span>9465 7675 294</li>
-                    <li><span class="icon-printer text-primary"></span>333-999-666</li>
+                    <li><span class="icon-map text-primary"></span>{{ __('footer.address') }}</li>
+                    <li><a href="mailto:Italiano@Company.com"><span class="icon-phone text-primary"></span>{{ __('footer.email') }}</a></li>
+                    <li><span class="icon-mail text-primary"></span>{{ __('footer.cel') }}</li>
+                    <li><span class="icon-printer text-primary"></span>{{ __('footer.address') }}</li>
                 </ul>
             </div>
 
             <div class="col-md-4 newsletter">
                 <div class="header">
-                    <h6>Newsletter</h6>
+                    <h6>{{ __('footer.language') }}</h6>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmo.</p>
-                <form action="#" id="subscribe" class="clearfix">
-                    <input type="email" name="subscribtion-email" placeholder="Enter Your Email Address" class="pull-left">
-                    <button type="submit" class="btn-unique has-border pull-left">Subscribe</button>
-                </form>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{ Config::get('languages')[App::getLocale()] }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                <li>
+                                    <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
             </div>
         </div>
 
@@ -45,16 +54,8 @@
     <div class="copyrights">
         <div class="container">
             <div class="row">
-                <div class="col-sm-5">
-                    <ul class="list-unstyled list-inline">
-                        <li><a href="#">Policy Privacy</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-
                 <div class="col-sm-7">
-                    <p>&copy; 2017 Italiano Restaurant. Template By <a href="https://bootstraptemple.com/" target="_blank">BootstrapTemple.com</a></p>
+                    <p>&copy; {{ __('footer.footer') }}<a href="https://bootstraptemple.com/" target="_blank">BootstrapTemple.com</a></p>
                     <!-- Please do not remove the backlink to us unless you have purchased the attribution-free license at https://bootstraptemple.com. It is part of the license conditions. Thanks for understanding :) -->
                 </div>
             </div>
