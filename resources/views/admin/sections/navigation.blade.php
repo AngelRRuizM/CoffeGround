@@ -2,22 +2,11 @@
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{ route('admin.dashboard') }}" class="site_title">
-                <span>Coffeegound</span>
+                <span>Coffeeground</span>
             </a>
         </div>
 
         <div class="clearfix"></div>
-
-        <!-- menu profile quick info -->
-        <div class="profile clearfix">
-            <div class="profile_pic">
-                <img src="{{ auth()->user()->avatar }}" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-                <h2>{{ auth()->user()->name }}</h2>
-            </div>
-        </div>
-        <!-- /menu profile quick info -->
 
         <br/>
 
@@ -26,9 +15,6 @@
         @if(auth()->user()->hasRole('administrator'))
             <div class="menu_section">
                 <ul class="nav side-menu">
-                    <li>
-                        <a href="{{ route('admin.dashboard') }}"><i class="fa fa-home" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_0_1') }}</a>
-                    </li>
                     <li>
                         <a href="{{ route('admin.users') }}"><i class="fa fa-users" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_1_1') }}</a>
                     </li>
@@ -52,7 +38,7 @@
                         <a href="{{ route('admin.grounds') }}"><i class="fa fa-gavel" aria-hidden="true"></i>Molidos</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.coffeeCategories') }}"><i class="fa fa-list-ul" aria-hidden="true"></i>Categorias de café</a>
+                        <a href="{{ route('admin.coffeeCategories') }}"><i class="fa fa-list-ul" aria-hidden="true"></i>Categorías de café</a>
                     </li>
                 </ul>
             </div>
@@ -64,7 +50,7 @@
                         <a href="{{ route('admin.products') }}"><i class="fa fa-gift" aria-hidden="true"></i>Productos</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.categories') }}"><i class="fa fa-filter" aria-hidden="true"></i>Categorias</a>
+                        <a href="{{ route('admin.categories') }}"><i class="fa fa-filter" aria-hidden="true"></i>Categorías</a>
                     </li>
                 </ul>
             </div>
