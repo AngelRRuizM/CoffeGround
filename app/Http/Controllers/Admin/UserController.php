@@ -85,9 +85,6 @@ class UserController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withErrors($validator->errors());
 
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-
         $user->active = $request->get('active', 0);
         $user->confirmed = $request->get('confirmed', 0);
 
