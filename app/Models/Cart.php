@@ -27,10 +27,21 @@ class Cart extends Model
     }
 
     public function presentations(){
-        return $this->belongsToMany(Presentation::class);
+        return $this->belongsToMany(Presentation::class)->withPivot('quantity');
     }
 
     public function products(){
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
+    }
+
+    public function calculateTotal(){
+        $sum = 0;
+        foreach($this->presentations as $presentation)
+            $sum += $presentation->price * $presentation->pivot->quantity;
+        
+        foreach($this->products as $product)
+            $sum += $product->price * $product->pivot->quantity;
+
+        return $sum;
     }
 }

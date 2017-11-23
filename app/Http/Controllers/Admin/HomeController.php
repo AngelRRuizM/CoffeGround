@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App;
 use App\Http\Controllers\Controller;
+use App\Mail\Message;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Coffee;
@@ -15,6 +17,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Cart;
+use App\Models\Auth\User\User;
 
 class HomeController extends Controller
 {
@@ -174,5 +177,34 @@ class HomeController extends Controller
         
         $view = view('home.products.list', compact('products', 'lan'));
         return $view->render();
+    }
+
+    /**
+     * Realiza el pedido y envía correos de confirmación al usuario y a los administradores
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function sendMessage(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:100',
+            'email' => 'required|max:100|email',
+            'message' => 'required|max:500',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($request->all())
+                ->withErrors($validator);
+        }
+
+        foreach(User::all() as $destiny){
+            if($destiny->hasRole('administrator') || $destiny->hasRole('subadministrator')){
+                Mail::to($destiny)->send(new Message($request));
+            }
+        }
+
+        return redirect( route('home'));
     }
 }

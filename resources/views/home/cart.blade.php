@@ -7,6 +7,13 @@
         <header class="text-center">
             <h2>{{ __('cart') }}</h2>
             <h3>{{ __('cart.description') }}</h3>
+            @if(sizeof(Auth::user()->carts->first()->presentations) > 0 || sizeof(Auth::user()->carts->first()->products) > 0)
+                <a href="{{ route('order') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">Realizar pedido</a>
+            @endif
+
+            @if($flash = session('message'))
+                <h3>{{$flash}}</h3>
+            @endif
         </header>
 
         <div class="menu">
@@ -54,11 +61,11 @@
                                             @if($lan)
                                                 <p>{{ __('store.content') }}: {{$presentation->weight}}</p>
                                                 <p>{{ __('store.ground') }} {{$presentation->ground->name_es}}</p>
-                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="1" required></p>
+                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="{{$presentation->pivot->quantity}}" required></p>
                                             @else
                                                 <p>{{ __('store.content') }}: {{$presentation->weight}}</p>
                                                 <p>{{ __('store.ground') }} {{$presentation->ground->name_en}}</p>
-                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="1" required></p>
+                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="{{$presentation->pivot->quantity}}" required></p>
                                             @endif
                                         </div>
                                     </div>
@@ -98,9 +105,9 @@
                                         <div class="item-price pull-right">
                                             <strong class="text-large text-primary">${{$product->price}}</strong>                                        
                                             @if($lan)
-                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="1" required></p>
+                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="{{$product->pivot->quantity}}" required></p>
                                             @else
-                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="1" required></p>
+                                                <p>{{ __('cart.quantity') }} <input style="z-index:-1; color:black; width: 75px" type="number" step="1" min="1" max="15" name="presentation_{{$presentation->id}}" id="presentation_{{$presentation->id}}" value="{{$product->pivot->quantity}}" required></p>
                                             @endif
                                         </div>
                                     </div>

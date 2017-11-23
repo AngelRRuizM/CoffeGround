@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
-
 use App;
+use App\Mail\OrderProcessed;
+use App\Mail\Order;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Presentation;
 use Illuminate\Http\Request;
+use App\Models\Auth\User\User;
 
 class CartController extends Controller
 {
@@ -104,6 +107,46 @@ class CartController extends Controller
         $user = auth()->user();
         $user->carts->first()->products()->detach($product);
 
+        return redirect( route('cart'));
+    }
+
+    /**
+     * Realiza el pedido y envía correos de confirmación al usuario y a los administradores
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function makeOrder()
+    {
+        $user = auth()->user();
+        $cart = $user->carts->first();
+
+        /*foreach($cart->presentations as $presentation){
+            if($request('presentation_'.$presentation->id) != null){
+                $presentation->pivot->quantity = $request('presentation_'.$presentation->id);
+                $presentation->pivot->save();
+            }
+        }
+    
+        foreach($cart->products as $product){
+            if($request('product_'.$product->id) != null){
+                $product->pivot->quantity = $request('product_'.$product->id);
+                $product->pivot->save();
+            }
+        }*/
+        
+        Mail::to($user)->send(new OrderProcessed($user));
+
+        foreach(User::all() as $destiny){
+            if($destiny->hasRole('administrator') || $destiny->hasRole('subadministrator')){
+                Mail::to($destiny)->send(new Order($user));
+            }
+        }
+
+        $cart->presentations()->detach();
+        $cart->products()->detach();
+
+        session()->flash('message', 'Tu pedido se ha realizado con éxito, revisa tu email para mayor información.');
         return redirect( route('cart'));
     }
 }

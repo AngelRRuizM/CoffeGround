@@ -150,6 +150,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::post('/message', 'HomeController@sendMessage')->name('message');
 Route::get('/cafes', 'HomeController@cindex')->name('coffees');
 Route::get('/cafes/{coffee}', 'HomeController@cshow')->name('coffees.show');
 Route::get('/productos', 'HomeController@pindex')->name('products');
@@ -160,6 +161,7 @@ Route::get('/categorias/{category}/subcategorias', 'Admin\SubcategoryController@
 
 
 Route::get('/usuario/carrito', 'CartController@cart')->name('cart');
+Route::get('/usuario/carrito/ordenar', 'CartController@makeOrder')->name('order');
 Route::get('/usuario/cafes/{presentation}', 'CartController@addPresentation')->name('store.coffee.cart');
 Route::get('/usuario/productos/{product}', 'CartController@addProduct')->name('store.product.cart');
 Route::delete('/usuario/cafes/{presentation}', 'CartController@destroyPresentation')->name('destroy.coffee.cart');

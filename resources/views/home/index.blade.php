@@ -129,13 +129,26 @@
                     <h3>{{ __('index.contact.desc') }}</h3>
                 </header>
 
-                <form method="get" action="#" id="contact-form">
+                <form method="POST" action="{{route('message')}}">
+                    @if(count($errors))
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <strong>Algo anda mal...</strong>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    {{ csrf_field() }}
+                    {{ method_field('POST') }}
                     <div class="row">
-                        <label for="user-name" class="col-sm-6 unique">{{ __('index.name') }}
-                            <input type="text" name="username" id="user-name" required>
+                        <label for="name" class="col-sm-6 unique">{{ __('index.name') }}
+                            <input type="text" name="name" id="name" required>
                         </label>
-                        <label for="user-email" class="col-sm-6 unique">{{ __('index.email') }}
-                            <input type="email" name="useremail" id="user-email" required>
+                        <label for="email" class="col-sm-6 unique">{{ __('index.email') }}
+                            <input type="email" name="email" id="email" required>
                         </label>
                         <label for="message" class="col-sm-12 unique">{{ __('index.message') }}
                             <textarea name="message" id="message" required></textarea>
