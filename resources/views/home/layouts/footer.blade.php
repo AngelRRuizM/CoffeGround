@@ -15,8 +15,8 @@
                 <ul class="contact list-unstyled">
                     <li><span class="icon-map text-primary"></span>{{ __('footer.address') }}</li>
                     <li><a href="mailto:Italiano@Company.com"><span class="icon-phone text-primary"></span>{{ __('footer.email') }}</a></li>
-                    <li><span class="icon-mail text-primary"></span>{{ __('footer.cel') }}</li>
-                    <li><span class="icon-printer text-primary"></span>{{ __('footer.address') }}</li>
+                    <li><span class="icon-mail text-primary"></span>{{ __('footer.phone') }}</li>
+                    <li><span class="icon-printer text-primary"></span>{{ __('footer.cel') }}</li>
                 </ul>
             </div>
 
@@ -24,29 +24,21 @@
                 <div class="header">
                     <h6>{{ __('footer.language') }}</h6>
                 </div>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        {{ Config::get('languages')[App::getLocale()] }}
-                    </a>
-                    <ul class="dropdown-menu">
+                <ul class="contact list-unstyled">
                         @foreach (Config::get('languages') as $lang => $language)
-                            @if ($lang != App::getLocale())
                                 <li>
                                     <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
                                 </li>
-                            @endif
                         @endforeach
                     </ul>
-                </li>
+                </ul>
             </div>
         </div>
 
         <ul class="social list-unstyled list-inline">
-            <li><a href="#" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.facebook.com/ImCoatiCoffee/" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#" target="_blank" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
             <li><a href="#" target="_blank" title="Skype"><i class="fa fa-skype"></i></a></li>
         </ul>
     </div>

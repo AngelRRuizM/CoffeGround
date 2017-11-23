@@ -50,9 +50,8 @@
             <div class="social">
                 <div class="wrapper">
                     <ul class="list-unstyled">
-                        <li><a href="#" title="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.facebook.com/ImCoatiCoffee/" title="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" title="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" title="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
                         <li><a href="#" title="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                     <span>{{ __('index.follow.us') }}</span>
@@ -60,31 +59,6 @@
             </div>
         </div><!-- End slider-wrapper -->
     </section><!-- End Hero Section -->
-
-
-    <!-- Details -->
-    <section id="details" class="details">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="heading text-center">
-                        <p>Call Us Now For</p>
-                        <h5>Home Delivery</h5>
-                    </div>
-                    <a href="tel:9870988764" class="phone">987 098 8764</a>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="heading text-center">
-                        <p>Check Our Clients'</p>
-                        <h5>Rating &amp; Reviews</h5>
-                    </div>
-                    <a href="#" class="reviews btn-unique"><i class="fa fa-angle-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Details-->
 
 
     <!-- About Section -->
@@ -111,7 +85,7 @@
                 <!-- item -->
                 <div class="col-sm-4 service">
                     <div class="icon">
-                        <i class="icon-like"></i>
+                        <i class="fa fa-map" aria-hidden="true"></i>
                     </div>
                     <div class="text">
                         <h4 class="text-gray-light">{{ __('about.mision') }}</h4>
@@ -122,7 +96,7 @@
                 <!-- item -->
                 <div class="col-sm-4 service">
                     <div class="icon">
-                        <i class="icon-hat"></i>
+                        <i class="fa fa-binoculars" aria-hidden="true"></i>
                     </div>
                     <div class="text">
                         <h4 class="text-gray-light">{{ __('about.vision') }}</h4>
@@ -133,7 +107,7 @@
                 <!-- item -->
                 <div class="col-sm-4 service">
                     <div class="icon">
-                        <i class="icon-plate"></i>
+                        <i class="fa fa-list" aria-hidden="true"></i>
                     </div>
                     <div class="text">
                         <h4 class="text-gray-light">{{ __('about.values') }}</h4>

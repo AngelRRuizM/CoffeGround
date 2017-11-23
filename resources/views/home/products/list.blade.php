@@ -4,7 +4,11 @@
             <a href="{{ route('products.show', ['product' => $product->id]) }}">
                 <div class="dish">
                     <div class="profile">
-                        <img src="assets/home/img/dish-c.png" class="img-responsive" alt="dish name">
+                        @if(sizeof($product->images) > 0)
+                            <img src="{!! asset('storage/'.$product->images->first()->path) !!}" class="img-responsive" alt="product image">
+                        @else
+                            <img src="{!! asset('assets/home/img/no_photo.jpg') !!}" class="img-responsive" alt="no photo">
+                        @endif
                     </div>
                     <div class="text">
                         @if($lan)

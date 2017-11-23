@@ -17,6 +17,7 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id');
+            $table->decimal('total', 16, 4)->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
@@ -24,6 +25,7 @@ class CreateCartsTable extends Migration
 
         Schema::create('cart_presentation', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('quantity')->default(1);
             $table->integer('cart_id')->unsigned();
             $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('presentation_id')->unsigned();
@@ -33,6 +35,7 @@ class CreateCartsTable extends Migration
 
         Schema::create('cart_product', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('quantity')->default(1);
             $table->integer('cart_id')->unsigned();
             $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('product_id')->unsigned();

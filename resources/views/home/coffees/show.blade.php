@@ -18,7 +18,8 @@
                 @if(sizeof($coffee->images) > 0)
                     @include('home.coffees.images')
                 @else
-                    <p>Imágenes no disponibles</p>
+                    <p>{{ __('store.image.no') }}</p>
+                    <img src="{!! asset('assets/home/img/no_photo.jpg') !!}" class="img-responsive" alt="No photo">
                 @endif
             </div>
 
@@ -40,7 +41,7 @@
                     @if(sizeof($coffee->presentations) > 0)
                         @include('home.coffees.presentations')
                     @else
-                        <h4>El café no se encuentra disponible en estos momentos</h4>
+                        <h4>{{ __('store.coffee.no') }}</h4>
                     @endif
                     
                 </div>

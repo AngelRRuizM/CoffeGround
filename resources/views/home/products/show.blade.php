@@ -18,7 +18,8 @@
                 @if(sizeof($product->images) > 0)
                     @include('home.products.images')
                 @else
-                    <p>Imágenes no disponibles</p>
+                    <p>{{ __('store.image.no') }}</p>
+                    <img src="{!! asset('assets/home/img/no_photo.jpg') !!}" class="img-responsive" alt="No photo">
                 @endif
             </div>
 

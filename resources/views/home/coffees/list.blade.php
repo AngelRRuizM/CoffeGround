@@ -4,7 +4,11 @@
             <a href="{{ route('coffees.show', ['coffee' => $coffee->id]) }}">
                 <div class="dish">
                     <div class="profile">
-                        <img src="assets/home/img/dish-c.png" class="img-responsive" alt="dish name">
+                        @if(sizeof($coffee->images) > 0)
+                            <img src="{!! asset('storage/'.$coffee->images->first()->path) !!}" class="img-responsive" alt="coffee image">
+                        @else
+                            <img src="{!! asset('assets/home/img/no_photo.jpg') !!}" class="img-responsive" alt="no photo">
+                        @endif
                     </div>
                     <div class="text">
                         @if($lan)
