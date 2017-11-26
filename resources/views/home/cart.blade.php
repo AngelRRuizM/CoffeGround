@@ -71,7 +71,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <p>{{ __('cart.empty') }}</p>
+                                <p>{{ __('cart.coffeeempty') }}</p>
                             @endif
                         </div>
 
@@ -113,7 +113,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <p>{{ __('cart.empty') }}.</p>
+                                <p>{{ __('cart.productempty') }}.</p>
                             @endif
                         </div>
                     </div>

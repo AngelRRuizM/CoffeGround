@@ -5,9 +5,9 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Lista de categorias</h2>
+            <h2>Lista de categorías</h2>
             <ul class="nav navbar-right panel_toolbox">
-                <li><a href="{{ route('admin.categories.create') }}"><button type="button" class="btn btn-success">Crear categoria</button></a></li>
+                <li><a href="{{ route('admin.categories.create') }}"><button type="button" class="btn btn-success">Crear categoría</button></a></li>
             </ul>
             <div class="clearfix"></div>
         </div>

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
          $this->call(GroundTableSeeder::class);
          $this->call(CoffeeCategoryTableSeeder::class);
          $this->call(CoffeeTableSeeder::class);
-         //$this->call(ImageTableSeeder::class);
+         $this->call(ImageTableSeeder::class);
          $this->call(PresentationTableSeeder::class);
          $this->call(ProductTableSeeder::class);
          $this->call(CartTableSeeder::class);

@@ -16,7 +16,7 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ route('admin.users') }}"><i class="fa fa-users" aria-hidden="true"></i>{{ __('views.backend.section.navigation.menu_1_1') }}</a>
+                        <a href="{{ route('admin.users') }}"><i class="fa fa-users" aria-hidden="true"></i>Usuarios</a>
                     </li>
                 </ul>
             </div>

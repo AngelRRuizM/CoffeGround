@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header"><a href="index.html" class="navbar-brand"><img src="/assets/home/img/logo.png" alt="Italiano" width="100"></a>
+            <div class="navbar-header"><a href="{{ route('home') }}" class="navbar-brand"><img src="/assets/home/img/logo.png" alt="Italiano" width="100"></a>
                 <div class="navbar-buttons">
                     <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
                 </div>

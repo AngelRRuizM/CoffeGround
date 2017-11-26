@@ -7,7 +7,7 @@
         <div class="x_title">
             <h2>Lista de categorias de café</h2>
             <ul class="nav navbar-right panel_toolbox">
-                <li><a href="{{ route('admin.coffeeCategories.create') }}"><button type="button" class="btn btn-success">Crear categoria de café</button></a></li>
+                <li><a href="{{ route('admin.coffeeCategories.create') }}"><button type="button" class="btn btn-success">Crear categoría de café</button></a></li>
             </ul>
             <div class="clearfix"></div>
         </div>
