@@ -13,6 +13,11 @@
                     <li><a href="/#contact">{{ __('home.contact') }}</a></li>
                     <li><a href="{{ route('coffees') }}">{{ __('home.coffee.store') }}</a></li>
                     <li><a href="{{ route('products') }}">{{ __('home.products') }}</a></li>
+                    @foreach (Config::get('languages') as $lang => $language)
+                        <li>
+                            <a href="{{ route('lang.switch', $lang) }}"><img src="/assets/home/img/{{$lang}}.png" alt="{{$lang}}" width="32" height="32"></a>
+                        </li>
+                    @endforeach
                 </ul>
                 @if(!Auth::check())
                     <a href="{{ route('login') }}" class="btn navbar-btn btn-unique hidden-sm hidden-xs">{{ __('views.auth.login.action_0') }}</a>

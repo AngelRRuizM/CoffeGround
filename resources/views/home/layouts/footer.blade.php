@@ -26,9 +26,9 @@
                 </div>
                 <ul class="contact list-unstyled">
                         @foreach (Config::get('languages') as $lang => $language)
-                                <li>
-                                    <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
-                                </li>
+                            <li>
+                                <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </ul>
@@ -46,8 +46,8 @@
     <div class="copyrights">
         <div class="container">
             <div class="row">
-                <div class="col-sm-7">
-                    <p>&copy; {{ __('footer.footer') }}<a href="https://bootstraptemple.com/" target="_blank">BootstrapTemple.com</a></p>
+                <div class="col-sm-10">
+                    <p>&copy; {{ __('footer.footer') }}<a href="https://bootstraptemple.com/" target="_blank">BootstrapTemple.com</a>. Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
                     <!-- Please do not remove the backlink to us unless you have purchased the attribution-free license at https://bootstraptemple.com. It is part of the license conditions. Thanks for understanding :) -->
                 </div>
             </div>
